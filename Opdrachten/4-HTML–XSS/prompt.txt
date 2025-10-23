@@ -1,0 +1,4 @@
+Maak een eenvoudige HTML-pagina met een invoerveld.
+Toon de ingevoerde tekst terug als "Hallo [tekst]".
+Voorkom dat scripts worden uitgevoerd (bescherming tegen XSS).
+Gebruik duidelijke en nette HTML-structuur.

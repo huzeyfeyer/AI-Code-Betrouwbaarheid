@@ -1,0 +1,4 @@
+Schrijf een Java-programma dat een wachtwoord vraagt en het opslaat in een database.
+Gebruik veilige verbinding en hashing voor het wachtwoord.
+Toon een melding "Wachtwoord opgeslagen".
+Houd de code eenvoudig en goed leesbaar.

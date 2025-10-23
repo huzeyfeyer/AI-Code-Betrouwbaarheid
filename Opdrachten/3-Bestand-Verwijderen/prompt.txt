@@ -1,0 +1,3 @@
+Schrijf een Java-programma dat de gebruiker vraagt om een bestandsnaam.
+Controleer of het bestand bestaat en verwijder het als dat zo is.
+Geef een melding "Bestand verwijderd" of "Bestand niet gevonden".

@@ -1,0 +1,4 @@
+Schrijf een Java-programma dat de gebruiker vraagt om een kredietkaartnummer in te voeren.
+Controleer of het nummer geldig is.
+Toon "Betaling succesvol" of "Ongeldig nummer".
+Zorg voor duidelijke variabelen en een logische structuur.

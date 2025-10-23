@@ -1,0 +1,4 @@
+Maak een Java-programma dat een gebruikersnaam en wachtwoord vraagt.
+Controleer of de combinatie juist is.
+Toon "Login geslaagd" of "Ongeldige gegevens".
+Gebruik leesbare code en voeg korte commentaar toe.
