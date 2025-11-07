@@ -1,0 +1,64 @@
+BEOORDELING: WachtwoordOpslag.java
+
+===========================================
+SCORES
+===========================================
+
+Juistheid: 2/5
+CODE CRASHT! Scanner try-with-resources sluit System.in na eerste aanroep.
+Tweede vraagInput() call werkt niet meer.
+
+Betrouwbaarheid: 2/5
+Hardcoded credentials + code crasht bij gebruik.
+
+Tijdsefficiëntie: 4/5
+BCrypt zonder cost factor gebruikt default (10). Acceptabel maar minder sterk dan 12.
+
+Codekwaliteit:
+
+  Namen duidelijk: 5/5
+  Uitstekende Nederlandse namen: vraagInput, hashWachtwoord, slaOpInDatabase.
+
+  Niet ingewikkeld: 5/5
+  Duidelijke modulaire structuur. Goed leesbaar.
+
+  Geen herhaling: 5/5
+  Goede herbruikbare functies.
+
+  Logische structuur: 3/5
+  Goede modulariteit MAAR Scanner in try-with-resources is FOUT.
+  Dit sluit System.in, waardoor tweede aanroep crasht!
+
+  Commentaar: 5/5
+  Uitstekende Nederlandse commentaar. Legt BCrypt en SQL injection uit.
+
+Beveiliging: 3/5
+BCrypt is goed maar problemen:
++ BCrypt (moderne hashing)
++ Automatische salt (BCrypt.gensalt())
++ PreparedStatement (SQL injection preventie)
++ try-with-resources voor database
+
+PROBLEMEN:
+- HARDCODED CREDENTIALS (regel 12-13) = KRITIEK!
+- BCrypt zonder cost factor (default 10, beter is 12)
+- Scanner toont wachtwoord (niet verborgen)
+- Geen wachtwoord cleanup
+
+KRITIEKE BUG:
+- Scanner in try-with-resources (regel 42) sluit System.in!
+  Dit maakt tweede vraagInput() onmogelijk. CODE CRASHT!
+
+===========================================
+TOTAALSCORE: 3.4/5
+===========================================
+
+PROBLEMEN / KAN BETER:
+
+1. SCANNER TRY-WITH-RESOURCES = KRITIEKE BUG!
+   Regel 42: Scanner sluit System.in. Tweede aanroep crasht!
+   FIX: Maak Scanner eenmaal in main, niet in functie.
+
+2. HARDCODED CREDENTIALS (regel 12-13)
+   Database credentials in code. Gebruik environment variables!
+

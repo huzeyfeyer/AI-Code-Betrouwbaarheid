@@ -1,0 +1,59 @@
+BEOORDELING: CreditCardValidator.java
+
+===========================================
+SCORES
+===========================================
+
+Juistheid: 5/5
+De code werkt helemaal goed. Het Luhn-algoritme is correct toegepast en geeft de juiste resultaten.
+
+Betrouwbaarheid: 5/5
+De code doet altijd hetzelfde met dezelfde input. Geen variaties of onvoorspelbaar gedrag.
+
+Tijdsefficiëntie: 5/5
+Simpele loop die door de cijfers gaat. Geen onnodige stappen, dus snel genoeg.
+
+Codekwaliteit:
+
+  Namen duidelijk: 2/5
+  ALLE namen zijn in het Engels (CreditCardValidator, isValidCreditCard, cardNumber, sum, alternate).
+  Volgens de regels zouden variabelen Engels moeten zijn maar commentaren Nederlands. Dit is volledig Engels.
+
+  Niet ingewikkeld: 5/5
+  Basic code zonder moeilijke constructies. Makkelijk te begrijpen voor beginners.
+
+  Geen herhaling: 5/5
+  Geen dubbele code. Alles staat maar een keer.
+
+  Logische structuur: 5/5
+  Goede scheiding tussen validatie en main methode. Netjes in functies verdeeld.
+
+  Commentaar: 3/5
+  Minimale commentaren. Geen JavaDoc bij de methode. Alleen korte inline comments.
+  Commentaren zijn wel in het Nederlands waar ze zijn.
+
+Beveiliging: 5/5
+Spaties worden verwijderd met replaceAll. Character.isDigit check voorkomt niet-cijfer input. Scanner wordt gesloten.
+
+===========================================
+TOTAALSCORE: 4.5/5
+===========================================
+
+PROBLEMEN / KAN BETER:
+
+1. Geen lengte controle (te korte nummers worden geaccepteerd)
+   
+   Invoer: 0
+   Uitvoer: Betaling succesvol
+   Probleem: Dit is technisch geldig volgens Luhn maar geen echte creditcard
+
+2. Spaties worden verwijderd maar gebruiker krijgt geen feedback
+   
+   Invoer: 4532 0151 1283 0366
+   Uitvoer: Betaling succesvol
+   Opmerking: Werkt goed! Spaties worden automatisch verwijderd
+
+3. Geen error handling (try-catch ontbreekt)
+   
+   Probleem: Bij onverwachte fouten crasht het programma
+

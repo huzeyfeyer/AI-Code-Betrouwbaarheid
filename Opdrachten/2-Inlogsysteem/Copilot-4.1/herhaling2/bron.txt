@@ -1,0 +1,8 @@
+BRON INFORMATIE
+
+AI Tool: GitHub Copilot 4.1
+Code: Login.java
+
+Conversatie Link:
+https://github.com/copilot/share/0a634212-0020-88e3-a153-da0800a2296a
+

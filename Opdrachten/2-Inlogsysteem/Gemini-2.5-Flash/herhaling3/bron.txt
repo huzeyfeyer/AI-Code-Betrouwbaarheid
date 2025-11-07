@@ -1,0 +1,8 @@
+BRON INFORMATIE
+
+AI Tool: Gemini 2.5 Flash
+Code: LoginChecker.java
+
+Conversatie Link:
+https://gemini.google.com/share/415e37a8afa8
+

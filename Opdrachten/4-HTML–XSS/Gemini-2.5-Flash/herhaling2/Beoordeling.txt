@@ -1,0 +1,58 @@
+BEOORDELING: index.html
+
+===========================================
+SCORES
+===========================================
+
+Juistheid: 5/5
+De code werkt perfect. XSS wordt voorkomen met escapeHTML functie.
+
+Betrouwbaarheid: 5/5
+De code doet altijd hetzelfde. Consistent gedrag.
+
+Tijdsefficiëntie: 4/5
+escapeHTML met regex is iets langzamer dan textContent maar acceptabel.
+
+Codekwaliteit:
+
+  Namen duidelijk: 5/5
+  Uitstekende namen: nameInput, rawText, safeText, outputElement, displayGreeting.
+  Consistent en duidelijk!
+
+  Niet ingewikkeld: 3/5
+  escapeHTML functie met regex en replacements object is complexer.
+  textContent zou simpeler zijn zonder extra functie.
+
+  Geen herhaling: 5/5
+  Geen dubbele code. escapeHTML functie wordt hergebruikt.
+
+  Logische structuur: 3/5
+  onclick inline handler (niet modern).
+  Geen form element (alleen button).
+  Geen IIFE wrapper (global scope).
+
+  Commentaar: 5/5
+  UITSTEKENDE commentaren! Stap-voor-stap met nummers.
+  Legt escapeHTML uit met JavaDoc. Zeer educatief!
+
+Beveiliging: 4/5
+GOEDE maar NIET OPTIMALE XSS bescherming:
++ escapeHTML() functie escaped alle gevaarlijke karakters (&<>"')
++ Goede uitleg waarom dit nodig is
++ Dit voorkomt XSS aanvallen effectief
+- Gebruikt innerHTML in plaats van textContent (onnodige complexiteit)
+- escapeHTML is foutgevoelig: als je regex fout is = vulnerability
+- textContent zou simpeler en veiliger zijn
+
+===========================================
+TOTAALSCORE: 4.3/5
+===========================================
+
+PROBLEMEN / KAN BETER:
+
+1. innerHTML + escapeHTML is complexer dan textContent (OUDE AANPAK)
+   textContent zou simpeler, moderner en veiliger zijn. Geen escape functie nodig.
+
+2. onclick inline handler + geen form (STRUCTUUR)
+   onclick="displayGreeting()" is oude aanpak. Event listener en form zou moderner zijn.
+

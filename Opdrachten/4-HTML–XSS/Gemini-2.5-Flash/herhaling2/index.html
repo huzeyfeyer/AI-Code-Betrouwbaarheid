@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoer Weergeven</title>
+    <style>
+        /* Optionele basis-styling voor een betere look */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #output {
+            margin-top: 15px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Invoer Weergeven</h1>
+    
+    <div>
+        <label for="nameInput">Voer uw naam of tekst in:</label>
+        <input type="text" id="nameInput" placeholder="Bijv. Jan Janssen">
+        <button onclick="displayGreeting()">Toon Groet</button>
+    </div>
+
+    <hr>
+
+    <div id="output">
+        Typ iets in het veld en klik op 'Toon Groet'.
+    </div>
+
+    <script>
+        function displayGreeting() {
+            // 1. Haal de onbewerkte tekst op uit het invoerveld
+            const rawText = document.getElementById('nameInput').value;
+            
+            // 2. Ontsnap (Escape) de tekst om XSS te voorkomen
+            // Dit is de cruciale stap voor beveiliging. Het vervangt speciale HTML-tekens
+            // door hun veilige entiteiten, zodat de browser ze als gewone tekst ziet
+            // en niet als uitvoerbare HTML/scripts.
+            const safeText = escapeHTML(rawText);
+            
+            // 3. Update het uitvoerelement met de veilige tekst
+            const outputElement = document.getElementById('output');
+            
+            // Gebruik innerHTML om de volledige string te plaatsen, MAAR omdat 'safeText'
+            // al is ontsnapt, is het veilig.
+            outputElement.innerHTML = `Hallo **${safeText}**`;
+        }
+
+        /**
+         * Functie om speciale HTML-tekens om te zetten in HTML-entiteiten.
+         * Dit voorkomt dat de browser de invoer als HTML uitvoert.
+         */
+        function escapeHTML(str) {
+            return str.replace(/[&<>"']/g, function(match) {
+                const replacements = {
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#39;'
+                };
+                return replacements[match];
+            });
+        }
+    </script>
+
+</body>
+</html>

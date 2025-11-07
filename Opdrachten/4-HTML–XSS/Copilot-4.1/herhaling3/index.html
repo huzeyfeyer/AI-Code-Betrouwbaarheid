@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Hallo Formulier</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        label, input, button { font-size: 1rem; }
+        #result { margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Hallo Formulier</h1>
+    <form id="halloForm" autocomplete="off">
+        <label for="naam">Voer je naam in:</label>
+        <input type="text" id="naam" name="naam" required>
+        <button type="submit">Verzenden</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        const form = document.getElementById('halloForm');
+        const result = document.getElementById('result');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const input = document.getElementById('naam').value;
+            // Voorkom XSS door de tekst als tekstnode toe te voegen
+            result.textContent = `Hallo ${input}`;
+        });
+    </script>
+</body>
+</html>

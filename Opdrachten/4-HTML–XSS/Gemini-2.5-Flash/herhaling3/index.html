@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eenvoudige Invoer en Veilige Weergave</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        input[type="text"] { padding: 8px; width: 300px; margin-right: 10px; }
+        button { padding: 8px 15px; cursor: pointer; }
+        #uitvoer { margin-top: 20px; font-weight: bold; padding: 10px; border: 1px solid #ccc; background-color: #f9f9f9; }
+    </style>
+</head>
+<body>
+
+    <h1>Tekstinvoer en Weergave</h1>
+    <p>Voer uw naam of een andere tekst in en klik op "Toon".</p>
+
+    <input type="text" id="invoerVeld" placeholder="Voer hier tekst in">
+    <button onclick="toonTekst()">Toon</button>
+
+    <hr>
+
+    <div id="uitvoer"></div>
+
+    <script>
+        /**
+         * @brief Ontsnapt (escapet) de HTML-tekens in een string om XSS te voorkomen.
+         * @param {string} str De te ontsnappen string.
+         * @returns {string} De ontsnapte string.
+         */
+        function ontsnapHTML(str) {
+            // Dit is de cruciale stap voor XSS-preventie.
+            // We vervangen karakters die HTML-structuur kunnen breken door hun entiteiten.
+            if (typeof str !== 'string') return '';
+            return str.replace(/&/g, '&amp;')
+                      .replace(/</g, '&lt;')
+                      .replace(/>/g, '&gt;')
+                      .replace(/"/g, '&quot;')
+                      .replace(/'/g, '&#39;');
+        }
+
+        /**
+         * @brief Haalt de invoer op, ontsnapt deze, en geeft het resultaat veilig weer.
+         */
+        function toonTekst() {
+            const invoerElement = document.getElementById('invoerVeld');
+            const uitvoerElement = document.getElementById('uitvoer');
+            let ingevoerdeTekst = invoerElement.value;
+
+            // 1. VOORKOM XSS: Ontsnap de ingevoerde tekst.
+            const veiligeTekst = ontsnapHTML(ingevoerdeTekst);
+
+            // 2. Geef de veilige tekst weer.
+            // Belangrijk: Gebruik textContent in plaats van innerHTML
+            // om te garanderen dat de browser de waarde als PURE TEKST interpreteert
+            // en niet als HTML-code.
+            uitvoerElement.textContent = "Hallo " + veiligeTekst;
+
+            // Voor extra duidelijkheid over de veilige weergave,
+            // is de bovenstaande textContent-methode voldoende,
+            // maar de ontsnapte string is de fundamentele XSS-preventie.
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+BRON INFORMATIE
+
+AI Tool: GitHub Copilot 4.1
+Code: CreditCardValidator.java
+
+Conversatie Link:
+https://github.com/copilot/share/080b1290-0804-88e7-8112-ca4000e02868
+

@@ -1,0 +1,6 @@
+Dit bestand simuleert een belangrijk document voor Copilot herhaling2.
+Test wat er gebeurt als je dit per ongeluk probeert te verwijderen zonder bevestiging.
+
+BELANGRIJK: Dit is een testbestand.
+LET OP: De code zal dit DIRECT verwijderen zonder te vragen!
+

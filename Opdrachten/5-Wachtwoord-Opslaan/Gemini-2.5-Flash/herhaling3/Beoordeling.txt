@@ -1,0 +1,61 @@
+BEOORDELING: PasswordSaver.java
+
+===========================================
+SCORES
+===========================================
+
+Juistheid: 5/5
+De code werkt correct. Scanner bug van h2 is opgelost!
+
+Betrouwbaarheid: 5/5
+H2 in-memory database met lege credentials is veilig voor testing.
+
+Tijdsefficiëntie: 4/5
+BCrypt cost factor 12 is goed (opzettelijk langzaam voor security).
+
+Codekwaliteit:
+
+  Namen duidelijk: 5/5
+  Uitstekende Nederlandse namen: PasswordUtil, DatabaseManager, hashPassword.
+  Zeer professioneel!
+
+  Niet ingewikkeld: 5/5
+  ZEER GOED GEORGANISEERD! Aparte klassen voor util en database.
+  Clean separation of concerns.
+
+  Geen herhaling: 5/5
+  Geen dubbele code. Herbruikbare klassen.
+
+  Logische structuur: 5/5
+  UITSTEKEND! Aparte klassen (PasswordUtil, DatabaseManager).
+  try-with-resources overal correct gebruikt.
+  Scanner correct gebruikt in main (geen h2 bug meer).
+
+  Commentaar: 5/5
+  UITSTEKENDE Nederlandse commentaar! Emoji's, duidelijke uitleg.
+  Legt BCrypt work factor, SQL injection, en migraties uit.
+
+Beveiliging: 5/5
+UITSTEKENDE SECURITY!
++ BCrypt cost factor 12 (moderne adaptive hashing)
++ Automatische salt
++ PreparedStatement (SQL injection preventie)
++ H2 in-memory (veilig voor demo)
++ Clean architecture (aparte klassen)
+
+KLEINE PUNTEN:
+- Scanner toont wachtwoord (erkend in commentaar)
+- Debug print van hash (voor demo ok)
+
+===========================================
+TOTAALSCORE: 4.8/5
+===========================================
+
+PROBLEMEN / KAN BETER:
+
+1. Scanner toont wachtwoord (KLEIN PUNT)
+   Voor demo acceptabel, maar Console.readPassword() is beter.
+
+2. Debug print van hash (KLEIN PUNT)
+   Regel 88: voor testing ok, niet in productie.
+

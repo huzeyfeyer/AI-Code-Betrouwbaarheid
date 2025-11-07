@@ -1,0 +1,72 @@
+BEOORDELING: PasswordSaver.java
+
+===========================================
+SCORES
+===========================================
+
+Juistheid: 5/5
+De code werkt technisch correct. Wachtwoord wordt gehasht en opgeslagen.
+
+Betrouwbaarheid: 3/5
+PROBLEEM: getOrDefault met hardcoded "postgres"/"postgres" credentials!
+Als environment variables niet gezet zijn, gebruikt het ONVEILIGE defaults.
+
+Tijdsefficiëntie: 4/5
+PBKDF2 met 210.000 iteraties is OPZETTELIJK langzaam (goed voor security).
+
+Codekwaliteit:
+
+  Namen duidelijk: 5/5
+  Goede namen: generateSalt, pbkdf2, ensureTable, ALGO, ITERATIONS.
+  Duidelijke constanten.
+
+  Niet ingewikkeld: 4/5
+  Simpeler dan herhaling1 maar nog steeds goed leesbaar.
+  Modulaire functies zijn duidelijk.
+
+  Geen herhaling: 5/5
+  Geen dubbele code. Helper functies zijn herbruikbaar.
+
+  Logische structuur: 4/5
+  Goede modulaire structuur met helper functies.
+  Maar: geen finally block voor password wipe (riskant).
+  try-with-resources voor database is goed.
+
+  Commentaar: 5/5
+  Goede Nederlandse commentaar. Stap-nummering (1, 2, 3).
+  Duidelijke uitleg van PBKDF2 parameters.
+
+Beveiliging: 2/5
+ERNSTIG BEVEILIGINGSPROBLEEM!
++ PBKDF2WithHmacSHA256 (moderne hash)
++ 210.000 iteraties (sterk)
++ SecureRandom salt (128-bit)
++ 256-bit hash
++ Console.readPassword() (verbergt wachtwoord)
++ Arrays.fill() op regel 38 (wist wachtwoord)
++ PreparedStatement (voorkomt SQL injection)
++ SSL in DB URL
+
+MAAR:
+- getOrDefault("postgres", "postgres") op regel 20-21 = ZEER GEVAARLIJK!
+  Als env vars niet gezet zijn, gebruikt het HARDCODED credentials!
+- Geen finally block: als exception voor regel 38, wachtwoord niet gewist!
+- printStackTrace() lekt stack trace info (regel 61)
+- Geen fallback naar Scanner (minder robuust dan h1)
+- System.exit(1) bij geen console (gebruiker kan niks doen)
+
+===========================================
+TOTAALSCORE: 3.8/5
+===========================================
+
+PROBLEMEN / KAN BETER:
+
+1. DEFAULT CREDENTIALS = GROOT SECURITY RISICO!
+   Regel 18-21: getOrDefault("postgres", "postgres") betekent:
+   Als DB_URL/DB_USER/DB_PASS niet gezet zijn, gebruikt het hardcoded defaults!
+   Dit is GEVAARLIJKER dan herhaling1 die gewoon crasht zonder env vars.
+
+2. Geen finally block voor password wipe (RISICO)
+   Als exception gebeurt voor regel 38, blijft wachtwoord in geheugen staan.
+   Herhaling1 had finally block - dat is beter!
+

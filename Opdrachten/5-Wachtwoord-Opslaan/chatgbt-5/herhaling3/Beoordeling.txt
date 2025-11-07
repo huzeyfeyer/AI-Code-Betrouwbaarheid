@@ -1,0 +1,77 @@
+BEOORDELING: SavePassword.java
+
+===========================================
+SCORES
+===========================================
+
+Juistheid: 5/5
+De code werkt correct. Wachtwoord wordt veilig gehasht met BCrypt en opgeslagen.
+
+Betrouwbaarheid: 5/5
+VEEL BETER dan herhaling2! getenvOrThrow crasht veilig zonder env vars.
+finally block garandeert dat wachtwoord altijd gewist wordt.
+
+Tijdsefficiëntie: 4/5
+BCrypt met cost factor 12 is OPZETTELIJK langzaam (goed voor security).
+Adaptive hashing betekent toekomstbestendig tegen snellere hardware.
+
+Codekwaliteit:
+
+  Namen duidelijk: 5/5
+  Uitstekende namen: getenvOrThrow, saveHash, hashed.
+  Duidelijke variabelen en functies.
+
+  Niet ingewikkeld: 5/5
+  SIMPELSTE code van alle drie herhalingen!
+  BCrypt is eenvoudiger te gebruiken dan PBKDF2.
+  Clean en leesbaar.
+
+  Geen herhaling: 5/5
+  Geen dubbele code. Functies zijn herbruikbaar.
+
+  Logische structuur: 5/5
+  UITSTEKENDE structuur! finally block garandeert cleanup.
+  Aparte saveHash functie is modulair.
+  try-with-resources voor database.
+  Stap-nummering (1, 2, 3, 4) is zeer duidelijk.
+
+  Commentaar: 5/5
+  Goede Nederlandse commentaar. Stap-nummering.
+  Duidelijke uitleg bij elke functie.
+
+Beveiliging: 5/5
+UITSTEKEND! Moderne password hashing met BCrypt.
++ Sterke hashing (BCrypt cost 12 + salt)
++ Wachtwoord verborgen bij invoer
++ Geen hardcoded credentials (crasht zonder env vars)
++ PreparedStatement voor database
+
+===========================================
+TOTAALSCORE: 4.9/5
+===========================================
+
+PROBLEMEN / KAN BETER:
+
+1. Scanner niet gesloten in fallback (KLEIN PUNT)
+   Regel 25: Scanner wordt gemaakt maar niet gesloten (minor resource leak).
+
+2. new String(password) maakt extra copy (ZEER KLEIN)
+   Regel 35: new String(password) maakt tijdelijk een String object in geheugen.
+   BCrypt vereist String, dus dit is bijna onvermijdelijk.
+
+WAAROM BCRYPT?
+
+BCrypt vs PBKDF2 (herhaling1):
++ BCrypt is SIMPELER te gebruiken (1 regel: BCrypt.hashpw)
++ BCrypt is ADAPTIVE (cost factor kan verhoogd worden later)
++ BCrypt heeft AUTOMATISCHE salt generatie
++ BCrypt output bevat algoritme + cost + salt + hash (alles in 1)
++ PBKDF2 vereist meer handmatige configuratie
+
+BEIDE zijn uitstekende keuzes! BCrypt is moderner en makkelijker.
+
+VERGELIJKING:
+Herhaling1 (4.8/5): PBKDF2, excellent maar complexer
+Herhaling2 (3.8/5): PBKDF2, GEVAARLIJKE getOrDefault
+Herhaling3 (4.9/5): BCrypt, simpeler en veiliger config!
+

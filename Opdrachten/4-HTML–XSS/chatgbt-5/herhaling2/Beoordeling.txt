@@ -1,0 +1,56 @@
+BEOORDELING: index.html
+
+===========================================
+SCORES
+===========================================
+
+Juistheid: 5/5
+De code werkt perfect. Tekst wordt veilig getoond en XSS wordt voorkomen met textContent.
+
+Betrouwbaarheid: 5/5
+De code doet altijd hetzelfde. Consistent en voorspelbaar gedrag.
+
+Tijdsefficiëntie: 5/5
+Directe DOM manipulatie zonder onnodige stappen. Zeer efficient.
+
+Codekwaliteit:
+
+  Namen duidelijk: 5/5
+  Alle ID's en variabelen hebben duidelijke Nederlandse namen (naam, output, naam-echo).
+  Consistent en logisch.
+
+  Niet ingewikkeld: 5/5
+  Eenvoudige en duidelijke code. Makkelijker dan herhaling1 maar nog steeds goed.
+
+  Geen herhaling: 5/5
+  Geen dubbele code. Alles staat maar een keer.
+
+  Logische structuur: 4/5
+  Goede structuur met form en event listener. Geen IIFE wrapper (variabelen in global scope).
+  Semantische HTML met main, form, label. Hidden attribute is elegante oplossing.
+
+  Commentaar: 4/5
+  Goede commentaar over XSS bescherming. Aria-live wordt uitgelegd.
+  Korter dan herhaling1 maar nog steeds duidelijk.
+
+Beveiliging: 5/5
+UITSTEKENDE XSS BESCHERMING!
++ textContent gebruikt (GEEN innerHTML) - voorkomt script execution
++ Nullish coalescing (??) en trim()
++ maxlength="200" voorkomt extreem lange input
++ Aria-live voor accessibility
++ Hidden attribute voor UX
+Dit is veilig en goed geimplementeerd!
+
+===========================================
+TOTAALSCORE: 4.8/5
+===========================================
+
+PROBLEMEN / KAN BETER:
+
+1. Geen IIFE wrapper (KLEIN PUNT)
+   Variabelen zitten in global scope. Voor standalone pagina niet erg.
+
+2. Geen noscript fallback (KLEIN PUNT)
+   Als JavaScript uit staat, geen melding voor gebruiker.
+

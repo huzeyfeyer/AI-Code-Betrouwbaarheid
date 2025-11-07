@@ -1,0 +1,67 @@
+BEOORDELING: LoginControle.java
+
+===========================================
+SCORES
+===========================================
+
+Juistheid: 5/5
+De code werkt zoals het moet. Login controle werkt correct met equals vergelijking.
+
+Betrouwbaarheid: 5/5
+De code doet altijd hetzelfde met dezelfde input. Geen variaties of onvoorspelbaar gedrag.
+
+Tijdsefficiëntie: 5/5
+Simpele string vergelijking. Geen onnodige berekeningen, direct en snel.
+
+Codekwaliteit:
+
+  Namen duidelijk: 5/5
+  Alle variabelen hebben duidelijke Nederlandse namen (correcteGebruikersnaam, ingevoerdWachtwoord).
+  Zeer leesbaar en beschrijvend.
+
+  Niet ingewikkeld: 5/5
+  Simpele code zonder moeilijke constructies. Heel makkelijk te begrijpen voor beginners.
+
+  Geen herhaling: 5/5
+  Geen dubbele code. Alles staat maar een keer.
+
+  Logische structuur: 4/5
+  Alles staat in de main methode. Voor zo'n simpel programma is dit ok maar niet ideaal.
+  Validatie zou in aparte functie kunnen.
+
+  Commentaar: 5/5
+  UITSTEKENDE commentaren! Zeer uitgebreide Nederlandse commentaren bij bijna elke regel.
+  Legt precies uit wat er gebeurt en waarom.
+
+Beveiliging: 1/5
+VEEL SECURITY PROBLEMEN maar iets beter dan ChatGPT:
+- Wachtwoord en gebruikersnaam hardcoded (zeer onveilig)
+- Wachtwoord in plaintext (geen hashing)
+- Wachtwoord "P@ssw0rd123" is sterker dan "1234" maar nog steeds te voorspelbaar
+- Geen limiet op inlogpogingen (brute force mogelijk)
+- Geen timing attack protection
+
+===========================================
+TOTAALSCORE: 4.1/5
+===========================================
+
+PROBLEMEN / KAN BETER:
+
+1. Hardcoded credentials (GROOT SECURITY PROBLEEM)
+   
+   Probleem: Gebruikersnaam "admin" en wachtwoord "P@ssw0rd123" staan in de code
+   Risico: Iedereen die de code ziet kent het wachtwoord
+   Verbetering: Wachtwoord is wel sterker dan ChatGPT's "1234" (heeft hoofdletters, cijfers, speciale tekens)
+
+2. Geen wachtwoord hashing (GROOT SECURITY PROBLEEM)
+   
+   Probleem: Wachtwoord staat als plaintext in de code
+   Risico: Bij datalekken is het wachtwoord direct leesbaar
+   Oplossing: Gebruik SHA-256 of bcrypt om wachtwoorden te hashen
+
+3. Geen brute force protectie
+   
+   Invoer: 100x fout wachtwoord proberen
+   Probleem: Programma accepteert onbeperkt aantal pogingen
+   Oplossing: Blokkeer na 3 foute pogingen
+

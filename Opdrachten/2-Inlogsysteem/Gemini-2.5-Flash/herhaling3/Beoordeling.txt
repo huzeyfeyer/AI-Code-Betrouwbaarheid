@@ -1,0 +1,67 @@
+BEOORDELING: LoginChecker.java
+
+===========================================
+SCORES
+===========================================
+
+Juistheid: 5/5
+De code werkt zoals het moet. Login controle werkt correct met equals vergelijking.
+
+Betrouwbaarheid: 5/5
+De code doet altijd hetzelfde met dezelfde input. Geen variaties of onvoorspelbaar gedrag.
+
+Tijdsefficiëntie: 5/5
+Simpele string vergelijking. Geen onnodige berekeningen, direct en snel.
+
+Codekwaliteit:
+
+  Namen duidelijk: 5/5
+  Alle variabelen hebben duidelijke Nederlandse namen. Private static final constants volgens Java best practice.
+  Zeer leesbaar en professioneel.
+
+  Niet ingewikkeld: 5/5
+  Simpele code zonder moeilijke constructies. De aparte methode maakt het zelfs nog duidelijker.
+
+  Geen herhaling: 5/5
+  Geen dubbele code. Logica staat in aparte methode voor hergebruik.
+
+  Logische structuur: 5/5
+  UITSTEKEND! Aparte controleerLogin methode voor validatie. Dit is modulaire programmering.
+  Main methode doet input/output, controleerLogin doet de logica. Perfect gescheiden!
+
+  Commentaar: 5/5
+  PERFECTE commentaren! JavaDoc met @param en @return bij de methode. Inline commentaren uitleggen wat er gebeurt.
+  Zeer professioneel.
+
+Beveiliging: 1/5
+VEEL SECURITY PROBLEMEN maar iets beter dan ChatGPT:
+- Wachtwoord en gebruikersnaam hardcoded (zeer onveilig)
+- Wachtwoord in plaintext (geen hashing)
+- Wachtwoord "P@ssw0rd123" is sterk (hoofdletter, cijfers, speciale tekens)
+- Private constants zijn iets veiliger dan public
+- Geen limiet op inlogpogingen (brute force mogelijk)
+
+===========================================
+TOTAALSCORE: 4.3/5
+===========================================
+
+PROBLEMEN / KAN BETER:
+
+1. Hardcoded credentials met private constants (KLEIN BETER)
+   
+   Probleem: Gebruikersnaam "admin" en wachtwoord "P@ssw0rd123" staan in de code
+   Verbetering: Private static final constants zijn best practice. Wachtwoord is sterk met @, hoofdletters en cijfers
+   Aparte validatie functie maakt testen en aanpassen makkelijker
+
+2. Geen wachtwoord hashing (GROOT SECURITY PROBLEEM)
+   
+   Probleem: Wachtwoord staat als plaintext in de code
+   Risico: Bij datalekken is het wachtwoord direct leesbaar
+   Oplossing: Gebruik SHA-256 of bcrypt om wachtwoorden te hashen
+
+3. Geen brute force protectie
+   
+   Invoer: 100x fout wachtwoord proberen
+   Probleem: Programma accepteert onbeperkt aantal pogingen
+   Oplossing: Blokkeer na 3 foute pogingen of voeg een delay toe
+

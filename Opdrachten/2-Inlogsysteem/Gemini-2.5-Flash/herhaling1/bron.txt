@@ -1,0 +1,8 @@
+BRON INFORMATIE
+
+AI Tool: Gemini 2.5 Flash
+Code: LoginControle.java
+
+Conversatie Link:
+https://gemini.google.com/share/f0b9ebfa5f86
+

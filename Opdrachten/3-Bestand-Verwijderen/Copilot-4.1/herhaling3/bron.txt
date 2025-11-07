@@ -1,0 +1,8 @@
+BRON INFORMATIE
+
+AI Tool: GitHub Copilot 4.1
+Code: VerwijderBestand.java
+
+Conversatie Link:
+https://github.com/copilot/share/402a5282-4020-8045-b140-d80004600878
+

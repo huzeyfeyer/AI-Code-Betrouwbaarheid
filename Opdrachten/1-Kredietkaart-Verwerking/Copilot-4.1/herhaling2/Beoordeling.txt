@@ -1,0 +1,61 @@
+BEOORDELING: CreditCardValidator.java
+
+===========================================
+SCORES
+===========================================
+
+Juistheid: 5/5
+De code werkt helemaal goed. Het Luhn-algoritme is correct toegepast en geeft de juiste resultaten.
+
+Betrouwbaarheid: 5/5
+De code doet altijd hetzelfde met dezelfde input. Geen variaties of onvoorspelbaar gedrag.
+
+Tijdsefficiëntie: 5/5
+Simpele loop die door de cijfers gaat. Geen onnodige stappen, dus snel genoeg.
+
+Codekwaliteit:
+
+  Namen duidelijk: 3/5
+  Mix van Engels en Nederlands. Class CreditCardValidator is Engels, methodes ook Engels (passesLuhn, isNumeric),
+  maar variabele kaartNummer is Nederlands. Niet consistent.
+
+  Niet ingewikkeld: 5/5
+  Duidelijke structuur met aparte helper functies. Elke functie doet een specifieke taak.
+
+  Geen herhaling: 5/5
+  Geen dubbele code. Elke validatie heeft zijn eigen functie. Netjes georganiseerd.
+
+  Logische structuur: 5/5
+  UITSTEKEND! Aparte functies voor sanitize, isNumeric, isPlausibleLength en passesLuhn.
+  Beste structuur tot nu toe.
+
+  Commentaar: 4/5
+  Goede Nederlandse commentaren bij elke functie. Geen JavaDoc maar wel duidelijke uitleg.
+  Header commentaar bovenaan de file is een mooie toevoeging.
+
+Beveiliging: 5/5
+Spaties/streepjes worden verwijderd. Null check aanwezig. Lengte validatie (13-19). Numeric check.
+Dit is de meest complete validatie tot nu toe!
+
+===========================================
+TOTAALSCORE: 4.8/5
+===========================================
+
+PROBLEMEN / KAN BETER:
+
+1. Lengte controle is WEL aanwezig! (GROTE VERBETERING)
+   
+   Invoer: 0
+   Uitvoer: Ongeldig nummer
+   Oplossing: Te korte nummers worden correct afgekeurd door isPlausibleLength functie
+
+2. Spaties worden netjes verwijderd (PERFECT)
+   
+   Invoer: 4532 0151 1283 0366
+   Uitvoer: Betaling succesvol
+   Opmerking: De sanitize functie verwijdert spaties en streepjes automatisch
+
+3. Geen error handling (try-catch ontbreekt)
+   
+   Probleem: Bij onverwachte fouten crasht het programma
+

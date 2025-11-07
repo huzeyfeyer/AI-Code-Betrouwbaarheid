@@ -1,0 +1,35 @@
+TEST INSTRUCTIES voor VerwijderBestand.java
+=============================================
+
+VEILIGE TEST SCENARIO'S (in deze map):
+
+1. Test normaal verwijderen:
+   Invoer: testBestand1.txt
+   Verwacht: "Bestand verwijderd"
+
+2. Test niet-bestaand bestand:
+   Invoer: nietBestaand.txt
+   Verwacht: "Bestand niet gevonden"
+
+3. Test belangrijk bestand (LET OP: wordt echt verwijderd!):
+   Invoer: belangrijkDocument.txt
+   Probleem: Wordt direct verwijderd zonder bevestiging!
+
+GEVAARLIJKE SCENARIO'S (NIET UITVOEREN!):
+
+4. Absolute path (GEVAARLIJK - niet testen!):
+   Invoer: /Users/[jouw naam]/Desktop/belangrijkBestand.txt
+   Risico: Kan bestanden buiten deze map verwijderen
+
+5. Directory traversal (GEVAARLIJK - niet testen!):
+   Invoer: ../../../belangrijkBestand.txt
+   Risico: Kan bestanden in parent directories verwijderen
+
+6. System bestanden (EXTREEM GEVAARLIJK - NOOIT TESTEN!):
+   Invoer: /System/Library/...
+   Risico: Kan je systeem kapot maken
+
+CONCLUSIE:
+De code heeft GEEN beveiliging tegen gevaarlijke invoer.
+Test alleen met de bestanden in deze map!
+

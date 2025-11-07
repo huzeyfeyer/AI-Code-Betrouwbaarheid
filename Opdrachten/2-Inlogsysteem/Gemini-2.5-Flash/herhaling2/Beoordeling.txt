@@ -1,0 +1,67 @@
+BEOORDELING: LoginControle.java
+
+===========================================
+SCORES
+===========================================
+
+Juistheid: 5/5
+De code werkt zoals het moet. Login controle werkt correct met equals vergelijking.
+
+Betrouwbaarheid: 5/5
+De code doet altijd hetzelfde met dezelfde input. Geen variaties of onvoorspelbaar gedrag.
+
+Tijdsefficiëntie: 5/5
+Simpele string vergelijking. Geen onnodige berekeningen, direct en snel.
+
+Codekwaliteit:
+
+  Namen duidelijk: 5/5
+  Alle variabelen hebben duidelijke Nederlandse namen. Constants in HOOFDLETTERS volgens Java conventie.
+  Zeer leesbaar en professioneel.
+
+  Niet ingewikkeld: 5/5
+  Simpele code zonder moeilijke constructies. Heel makkelijk te begrijpen voor beginners.
+
+  Geen herhaling: 5/5
+  Geen dubbele code. Alles staat maar een keer. Constants worden hergebruikt.
+
+  Logische structuur: 5/5
+  VERBETERING! Gebruik van final constants is best practice. Gestructureerde commentaren met sectie headers.
+  Voor zo'n simpel programma is de structuur nu uitstekend.
+
+  Commentaar: 5/5
+  UITSTEKENDE commentaren! Gestructureerd met sectie headers (---). Uitlegt wat er gebeurt en waarom.
+  Emojis ✅ ❌ maken output duidelijker voor gebruikers.
+
+Beveiliging: 1/5
+VEEL SECURITY PROBLEMEN maar iets beter dan ChatGPT:
+- Wachtwoord en gebruikersnaam hardcoded (zeer onveilig)
+- Wachtwoord in plaintext (geen hashing)
+- Wachtwoord "Welkom123" is redelijk sterk (hoofdletter + cijfers)
+- Geen limiet op inlogpogingen (brute force mogelijk)
+- Geen timing attack protection
+
+===========================================
+TOTAALSCORE: 4.3/5
+===========================================
+
+PROBLEMEN / KAN BETER:
+
+1. Hardcoded credentials maar met constants (KLEIN BETER)
+   
+   Probleem: Gebruikersnaam "admin" en wachtwoord "Welkom123" staan in de code
+   Verbetering: Gebruik van final constants is best practice, maakt aanpassen makkelijker
+   Wachtwoord "Welkom123" is sterker dan "1234" (heeft hoofdletter en cijfers)
+
+2. Geen wachtwoord hashing (GROOT SECURITY PROBLEEM)
+   
+   Probleem: Wachtwoord staat als plaintext in de code
+   Risico: Bij datalekken is het wachtwoord direct leesbaar
+   Oplossing: Gebruik SHA-256 of bcrypt om wachtwoorden te hashen
+
+3. Geen brute force protectie
+   
+   Invoer: 100x fout wachtwoord proberen
+   Probleem: Programma accepteert onbeperkt aantal pogingen
+   Oplossing: Blokkeer na 3 foute pogingen
+

@@ -1,0 +1,56 @@
+BEOORDELING: index.html
+
+===========================================
+SCORES
+===========================================
+
+Juistheid: 5/5
+De code werkt correct. XSS wordt voorkomen met escapeHtml() functie.
+
+Betrouwbaarheid: 5/5
+De code doet altijd hetzelfde. Consistent gedrag.
+
+Tijdsefficiëntie: 4/5
+Escape functie doet 5 replace calls. textContent zou sneller zijn maar dit is nog steeds acceptabel.
+
+Codekwaliteit:
+
+  Namen duidelijk: 4/5
+  Mix van Nederlands (naam) en Engels (inputForm, output, escapeHtml).
+  Niet volledig consistent.
+
+  Niet ingewikkeld: 4/5
+  escapeHtml functie voegt complexiteit toe. textContent zou simpeler zijn.
+  Maar de functie zelf is wel duidelijk en leesbaar.
+
+  Geen herhaling: 5/5
+  Geen dubbele code. escapeHtml functie wordt hergebruikt.
+
+  Logische structuur: 4/5
+  Goede structuur maar geen IIFE wrapper (variabelen in global scope).
+  Semantische HTML met form, label.
+
+  Commentaar: 0/5
+  GEEN ENKELE COMMENTAAR! Dit is een gemiste kans.
+  De escapeHtml functie verdient uitleg over waarom dit nodig is voor XSS bescherming.
+
+Beveiliging: 4/5
+GOEDE maar NIET OPTIMALE XSS bescherming:
++ escapeHtml() functie escaped alle gevaarlijke karakters (& < > " ')
++ Dit voorkomt XSS aanvallen effectief
+- Gebruikt innerHTML in plaats van textContent (onnodige complexiteit)
+- escapeHtml is foutgevoelig: als je een karakter vergeet, is er een vulnerability
+- textContent zou simpeler en veiliger zijn (geen escape nodig)
+
+===========================================
+TOTAALSCORE: 4.0/5
+===========================================
+
+PROBLEMEN / KAN BETER:
+
+1. innerHTML + escapeHtml is complexer dan textContent (OUDE AANPAK)
+   textContent zou simpeler en moderner zijn. Geen escape functie nodig.
+
+2. Geen commentaar (GEMISTE KANS)
+   Geen uitleg waarom escapeHtml nodig is voor XSS bescherming.
+

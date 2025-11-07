@@ -1,0 +1,57 @@
+BEOORDELING: index.html
+
+===========================================
+SCORES
+===========================================
+
+Juistheid: 5/5
+De code werkt perfect. XSS wordt voorkomen met textContent.
+
+Betrouwbaarheid: 5/5
+De code doet altijd hetzelfde. Consistent gedrag.
+
+Tijdsefficiëntie: 5/5
+Directe DOM manipulatie met textContent. Efficient en simpel.
+
+Codekwaliteit:
+
+  Namen duidelijk: 5/5
+  Uitstekende Nederlandse namen: invoerVeld, resultaatDiv, ingevoerdeTekst, nieuweTekst.
+  Zeer consistent en duidelijk!
+
+  Niet ingewikkeld: 4/5
+  Simpele code maar onclick in HTML is oudere aanpak.
+  Event listener zou moderner zijn.
+
+  Geen herhaling: 5/5
+  Geen dubbele code. Alles staat maar een keer.
+
+  Logische structuur: 3/5
+  Simpele structuur maar GEEN form element (alleen button).
+  onclick inline handler (niet best practice - mix HTML/JS).
+  Geen IIFE wrapper (global scope).
+
+  Commentaar: 5/5
+  UITSTEKENDE commentaren! Stap-voor-stap uitleg met nummers.
+  Legt XSS bescherming in detail uit. Zeer educatief!
+
+Beveiliging: 5/5
+UITSTEKENDE XSS BESCHERMING!
++ textContent gebruikt (GEEN innerHTML) - voorkomt script execution
++ Commentaar legt duidelijk uit waarom dit veilig is
++ Eenvoudige implementatie zonder complexe escape functies
+Dit is de CORRECTE moderne aanpak!
+
+===========================================
+TOTAALSCORE: 4.6/5
+===========================================
+
+PROBLEMEN / KAN BETER:
+
+1. onclick inline handler (OUDE AANPAK)
+   onclick="toonTekst()" in HTML is niet moderne best practice.
+   Event listener in JavaScript zou beter zijn: button.addEventListener('click', ...)
+
+2. Geen form element (KAN BETER)
+   Gebruikt alleen button zonder form. Form met submit zou beter zijn voor accessibility.
+

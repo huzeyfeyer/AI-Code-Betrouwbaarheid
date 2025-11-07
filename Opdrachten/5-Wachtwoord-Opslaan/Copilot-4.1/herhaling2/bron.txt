@@ -1,0 +1,8 @@
+BRON INFORMATIE
+
+AI Tool: GitHub Copilot 4.1
+Code: PasswordSaver.java
+
+Conversatie Link:
+https://github.com/copilot/share/82424082-4124-88e5-a150-4a0004e8497a
+

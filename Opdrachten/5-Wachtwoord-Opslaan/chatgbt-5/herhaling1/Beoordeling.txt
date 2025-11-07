@@ -1,0 +1,59 @@
+BEOORDELING: SavePassword.java
+
+===========================================
+SCORES
+===========================================
+
+Juistheid: 5/5
+De code werkt perfect. Wachtwoord wordt veilig gehasht en opgeslagen in database.
+
+Betrouwbaarheid: 5/5
+Consistent gedrag. Goede error handling. Wachtwoord wordt altijd gewist uit geheugen.
+
+Tijdsefficiëntie: 4/5
+PBKDF2 met 210.000 iteraties is OPZETTELIJK langzaam (dit is GOED voor security).
+Voorkomt brute force aanvallen. Trade-off tussen security en snelheid is correct.
+
+Codekwaliteit:
+
+  Namen duidelijk: 5/5
+  Uitstekende Engelse namen: hashPassword, secureWipe, readPasswordSafely.
+  Constanten zijn duidelijk: PBKDF2_ALG, ITERATIONS, SALT_BYTES.
+
+  Niet ingewikkeld: 4/5
+  Redelijk complex maar noodzakelijk voor security.
+  PBKDF2 implementatie is professioneel. Fallback logica is duidelijk.
+
+  Geen herhaling: 5/5
+  Geen dubbele code. Functies zijn herbruikbaar.
+
+  Logische structuur: 5/5
+  UITSTEKENDE modulaire structuur! Aparte functies voor:
+  - readPasswordSafely (input)
+  - hashPassword (crypto)
+  - secureWipe (cleanup)
+  try-with-resources voor database, finally voor wachtwoord wissen.
+
+  Commentaar: 5/5
+  PERFECTE Nederlandse commentaar! Legt PBKDF2 instellingen uit.
+  Duidelijke stap-nummering (1, 2, 3). JavaDoc voor functies.
+
+Beveiliging: 5/5
+UITSTEKEND! Moderne password hashing met PBKDF2.
++ Sterke hashing (210k iteraties + salt)
++ Wachtwoord verborgen bij invoer
++ Geen hardcoded credentials
++ PreparedStatement voor database
+
+===========================================
+TOTAALSCORE: 4.8/5
+===========================================
+
+PROBLEMEN / KAN BETER:
+
+1. Scanner niet gesloten in fallback (KLEIN PUNT)
+   In regel 88-90: Scanner wordt gemaakt maar niet gesloten (resource leak).
+
+2. Geen wachtwoord validatie (KLEIN PUNT)
+   Geen check op minimale lengte of complexiteit. Accepteert elk wachtwoord.
+

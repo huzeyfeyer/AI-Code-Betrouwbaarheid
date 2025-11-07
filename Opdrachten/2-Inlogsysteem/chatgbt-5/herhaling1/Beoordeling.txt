@@ -1,0 +1,66 @@
+BEOORDELING: LoginSysteem.java
+
+===========================================
+SCORES
+===========================================
+
+Juistheid: 5/5
+De code werkt zoals het moet. Login controle werkt correct met equals vergelijking.
+
+Betrouwbaarheid: 5/5
+De code doet altijd hetzelfde met dezelfde input. Geen variaties of onvoorspelbaar gedrag.
+
+Tijdsefficiëntie: 5/5
+Simpele string vergelijking. Geen onnodige berekeningen, direct en snel.
+
+Codekwaliteit:
+
+  Namen duidelijk: 5/5
+  Alle variabelen hebben duidelijke Nederlandse namen (juisteGebruikersnaam, wachtwoord, invoer).
+  Zeer leesbaar.
+
+  Niet ingewikkeld: 5/5
+  Simpele code zonder moeilijke constructies. Heel makkelijk te begrijpen voor beginners.
+
+  Geen herhaling: 5/5
+  Geen dubbele code. Alles staat maar een keer.
+
+  Logische structuur: 4/5
+  Alles staat in de main methode. Voor zo'n simpel programma is dit ok maar niet ideaal.
+  Validatie zou in aparte functie kunnen.
+
+  Commentaar: 5/5
+  Duidelijke Nederlandse commentaren bij elke stap. Legt uit wat er gebeurt.
+
+Beveiliging: 0/5
+VEEL SECURITY PROBLEMEN! Dit is de grootste zwakte:
+- Wachtwoord en gebruikersnaam hardcoded in de code (zeer onveilig)
+- Wachtwoord in plaintext (geen hashing)
+- Wachtwoord "1234" is te zwak
+- Geen limiet op inlogpogingen (brute force mogelijk)
+- Geen timing attack protection
+
+===========================================
+TOTAALSCORE: 3.9/5
+===========================================
+
+PROBLEMEN / KAN BETER:
+
+1. Hardcoded credentials (GROOT SECURITY PROBLEEM)
+   
+   Probleem: Gebruikersnaam "admin" en wachtwoord "1234" staan rechtstreeks in de code
+   Risico: Iedereen die de code ziet kent het wachtwoord
+   Oplossing: Gebruik een database of configuratiebestand met gehashte wachtwoorden
+
+2. Geen wachtwoord hashing (GROOT SECURITY PROBLEEM)
+   
+   Probleem: Wachtwoord staat als plaintext "1234" in de code
+   Risico: Bij datalekken is het wachtwoord direct leesbaar
+   Oplossing: Gebruik SHA-256 of bcrypt om wachtwoorden te hashen
+
+3. Geen brute force protectie
+   
+   Invoer: 100x fout wachtwoord proberen
+   Probleem: Programma blijft draaien, geen limiet op pogingen
+   Oplossing: Blokkeer na 3 foute pogingen
+

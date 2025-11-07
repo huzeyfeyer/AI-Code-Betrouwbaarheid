@@ -1,0 +1,65 @@
+BEOORDELING: index.html
+
+===========================================
+SCORES
+===========================================
+
+Juistheid: 5/5
+De code werkt perfect. XSS wordt voorkomen met textContent.
+
+Betrouwbaarheid: 5/5
+De code doet altijd hetzelfde. Consistent gedrag.
+
+Tijdsefficiëntie: 5/5
+Directe DOM manipulatie met textContent. Geen onnodige stappen. Efficient!
+
+Codekwaliteit:
+
+  Namen duidelijk: 5/5
+  Alle namen zijn duidelijk: halloForm, naam, result.
+  Mix Nederlands/Engels maar logisch en consistent.
+
+  Niet ingewikkeld: 5/5
+  SIMPEL en DUIDELIJK! Geen onnodige functies zoals escapeHTML.
+  Dit is de juiste aanpak voor XSS bescherming.
+
+  Geen herhaling: 5/5
+  Geen dubbele code. Alles staat maar een keer.
+
+  Logische structuur: 4/5
+  Goede structuur met form en event listener.
+  Geen IIFE wrapper (variabelen in global scope) maar voor standalone pagina ok.
+
+  Commentaar: 3/5
+  1 goede commentaar over XSS bescherming.
+  Meer uitleg zou helpen voor beginners.
+
+Beveiliging: 5/5
+UITSTEKENDE XSS BESCHERMING!
++ textContent gebruikt (GEEN innerHTML) - voorkomt script execution
++ Commentaar legt uit waarom dit veilig is
++ Template literal voor clean syntax
++ preventDefault() voorkomt form submission
+Dit is de MODERNE en CORRECTE aanpak!
+
+===========================================
+TOTAALSCORE: 4.6/5
+===========================================
+
+PROBLEMEN / KAN BETER:
+
+1. Geen IIFE wrapper (KLEIN PUNT)
+   Variabelen form en result zitten in global scope.
+
+2. Minimale commentaar (KAN BETER)
+   Slechts 1 regel commentaar. Meer uitleg over security zou helpen.
+
+GROTE VERBETERING TEN OPZICHTE VAN VORIGE HERHALINGEN!
+
+Herhaling1 (4.0/5): escapeHtml + innerHTML - complex en oud
+Herhaling2 (3.6/5): escapeHTML + textContent - verwarrend dubbel werk
+Herhaling3 (4.6/5): ALLEEN textContent - simpel en modern! ✓
+
+Copilot heeft EINDELIJK de moderne aanpak toegepast!
+Dit is hoe het hoort: gewoon textContent, geen complexe escape functies.
+

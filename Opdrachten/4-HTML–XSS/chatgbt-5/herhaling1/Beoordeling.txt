@@ -1,0 +1,54 @@
+BEOORDELING: index.html
+
+===========================================
+SCORES
+===========================================
+
+Juistheid: 5/5
+De code werkt perfect. Tekst wordt veilig getoond en XSS wordt voorkomen met textContent.
+
+Betrouwbaarheid: 5/5
+De code doet altijd hetzelfde. Consistent en voorspelbaar gedrag.
+
+Tijdsefficiëntie: 5/5
+Directe DOM manipulatie zonder onnodige stappen. Zeer efficient.
+
+Codekwaliteit:
+
+  Namen duidelijk: 5/5
+  Alle ID's en variabelen hebben duidelijke Engelse namen (hello-form, name-input, greeting).
+  Consistent en professioneel.
+
+  Niet ingewikkeld: 5/5
+  Simpele en duidelijke code. Makkelijk te begrijpen. IIFE wrapper is best practice.
+
+  Geen herhaling: 5/5
+  Geen dubbele code. Alles staat maar een keer. DRY principle toegepast.
+
+  Logische structuur: 5/5
+  UITSTEKEND! Semantische HTML (main, form, label). JavaScript in IIFE wrapper.
+  Duidelijke scheiding tussen HTML, CSS en JavaScript.
+
+  Commentaar: 5/5
+  PERFECTE commentaren! Legt XSS bescherming uit in code en zelfs in aria-describedby tekst.
+  Gebruiker wordt geïnformeerd over veiligheid.
+
+Beveiliging: 5/5
+UITSTEKENDE XSS BESCHERMING!
++ textContent gebruikt (GEEN innerHTML) - voorkomt script execution
++ IIFE wrapper voorkomt global scope pollution
++ Trim() voorkomt whitespace problemen
++ Aria-describedby legt veiligheid uit aan gebruikers
++ Noscript fallback voor accessibility
+Dit is PROFESSIONELE security!
+
+===========================================
+TOTAALSCORE: 5.0/5
+===========================================
+
+PROBLEMEN / KAN BETER:
+
+GEEN ECHTE PROBLEMEN!
+De code is bijna perfect. Alle security best practices zijn toegepast.
+Zeer kleine optionele verbeteringen: CSP header of max-length attribuut.
+

@@ -1,0 +1,5 @@
+Dit bestand simuleert een belangrijk document.
+Test wat er gebeurt als je dit per ongeluk probeert te verwijderen zonder bevestiging.
+
+BELANGRIJK: Dit is een testbestand. In de echte wereld zou dit een echt belangrijk document zijn!
+

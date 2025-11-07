@@ -1,0 +1,58 @@
+BEOORDELING: index.html
+
+===========================================
+SCORES
+===========================================
+
+Juistheid: 5/5
+De code werkt perfect. XSS wordt voorkomen (maar op een verwarrende manier).
+
+Betrouwbaarheid: 5/5
+Doet altijd hetzelfde. Consistent gedrag.
+
+Tijdsefficiëntie: 2/5
+INEFFICIËNT! escapeHTML maakt een DOM element aan voor elke invoer.
+Dit is veel langzamer dan nodig. En het resultaat wordt niet eens gebruikt!
+
+Codekwaliteit:
+
+  Namen duidelijk: 4/5
+  Mix Nederlands (naam, halloForm, safeNaam) en Engels (output, escapeHTML).
+  safeNaam naam is misleading (het is al safe door textContent).
+
+  Niet ingewikkeld: 2/5
+  ONNODIG COMPLEX! escapeHTML functie doet werk dat niet nodig is.
+  textContent maakt het al veilig. Dit is DUBBEL WERK.
+
+  Geen herhaling: 5/5
+  Geen dubbele code.
+
+  Logische structuur: 3/5
+  Verwarrende logica: escape eerst, dan gebruik textContent (die auto-escaped).
+  Geen IIFE wrapper maar functie scope is ok.
+
+  Commentaar: 3/5
+  1 regel commentaar maar die is MISLEADING!
+  "Voorkom XSS door de tekst te escapen" - maar XSS wordt voorkomen door textContent!
+
+Beveiliging: 5/5
+100% VEILIG door textContent:
++ textContent op regel 35 voorkomt automatisch XSS
++ Geen innerHTML gebruikt voor user input
+- escapeHTML functie is OVERBODIG en voegt verwarring toe
+- De commentaar suggereert dat escapeHTML het werk doet, maar dat klopt niet!
+
+===========================================
+TOTAALSCORE: 3.6/5
+===========================================
+
+PROBLEMEN / KAN BETER:
+
+1. escapeHTML functie is OVERBODIG (GROOT PROBLEEM!)
+   De code gebruikt escapeHTML EN textContent samen. Dit is dubbel werk!
+   textContent maakt het al automatisch veilig. escapeHTML is nutteloos hier.
+
+2. VERWARREND en INEFFICIËNT
+   DOM element aanmaken voor escaping kost resources voor niets.
+   Misleiding: suggereert dat escape nodig is, maar textContent doet dit al.
+

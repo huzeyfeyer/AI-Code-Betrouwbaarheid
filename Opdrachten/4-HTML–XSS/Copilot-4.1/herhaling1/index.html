@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Hallo Invoer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2em; }
+    label, input, button { font-size: 1em; }
+    #output { margin-top: 1em; font-weight: bold; }
+    form { display: flex; gap: 0.5em; align-items: center; }
+  </style>
+</head>
+<body>
+  <h1>Hallo Invoer</h1>
+  <form id="inputForm" autocomplete="off">
+    <label for="naam">Naam:</label>
+    <input type="text" id="naam" name="naam" required>
+    <button type="submit">Toon</button>
+  </form>
+  <div id="output"></div>
+
+  <script>
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    document.getElementById('inputForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const naam = document.getElementById('naam').value;
+      document.getElementById('output').innerHTML = "Hallo " + escapeHtml(naam);
+    });
+  </script>
+</body>
+</html>

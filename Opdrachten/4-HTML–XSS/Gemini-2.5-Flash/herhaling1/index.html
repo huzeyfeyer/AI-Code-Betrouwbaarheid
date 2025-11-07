@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eenvoudige Invoerpagina met XSS-bescherming</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        #resultaat {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Voer uw naam of tekst in</h1>
+
+    <input type="text" id="invoerVeld" placeholder="Typ hier iets...">
+    <button onclick="toonTekst()">Toon Resultaat</button>
+
+    <div id="resultaat"></div>
+
+    <script>
+        function toonTekst() {
+            // 1. Haal de ingevoerde waarde op
+            const ingevoerdeTekst = document.getElementById('invoerVeld').value;
+            
+            // 2. Zoek het element waar het resultaat moet komen
+            const resultaatDiv = document.getElementById('resultaat');
+            
+            // 3. Bouw de uiteindelijke tekst op
+            const nieuweTekst = "Hallo " + ingevoerdeTekst;
+
+            // 4. BELANGRIJK: Gebruik textContent voor XSS-bescherming
+            //    textContent zorgt ervoor dat elk teken in de invoer (inclusief < of >)
+            //    als pure tekst wordt behandeld en NIET als HTML-code wordt uitgevoerd.
+            resultaatDiv.textContent = nieuweTekst;
+        }
+    </script>
+
+</body>
+</html>

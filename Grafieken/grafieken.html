@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Code Betrouwbaarheid - Gedetailleerde Grafieken</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #1A1A40;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        .chart-container {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .chart-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #1A1A40;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .chart-wrapper {
+            position: relative;
+            height: 300px;
+        }
+        .chart-wrapper.small {
+            height: 280px;
+        }
+        .instructions {
+            background: #E3F2FD;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 4px solid #2196F3;
+        }
+        .instructions h2 {
+            margin-top: 0;
+            color: #1A1A40;
+            font-size: 18px;
+        }
+        .instructions p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        @media (max-width: 1000px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .legend {
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Gedetailleerde Analyse per Criterium</h1>
+        <p class="subtitle">Alle 5 beoordelingscriteria per opdracht - Geschikt voor Word documenten</p>
+        <p class="subtitle" style="font-size: 12px; color: #999; margin-top: -15px;">
+            ! Grafieken gegenereerd met Claude Sonnet 4.5 AI | Chart.js voor visualisatie !
+        </p>
+
+        <div class="instructions">
+            <h2>📋 DE 5 BEOORDELINGSCRITERIA</h2>
+            <p><strong>1. Juistheid (5 ptn)</strong> - Werkt de code correct? Geeft het de juiste resultaten?</p>
+            <p><strong>2. Betrouwbaarheid (5 ptn)</strong> - Doet de code altijd hetzelfde met dezelfde input?</p>
+            <p><strong>3. Tijdsefficiëntie (5 ptn)</strong> - Is de code snel genoeg? Geen onnodige berekeningen?</p>
+            <p><strong>4. Codekwaliteit (5 ptn)</strong> - Duidelijke namen, niet ingewikkeld, goede structuur, commentaar?</p>
+            <p><strong>5. Beveiliging (5 ptn)</strong> - Zijn er security problemen? Input validatie? Veilige opslag?</p>
+        </div>
+
+        <!-- OPDRACHT 1: KREDIETKAART -->
+        <div class="chart-container">
+            <div class="chart-title">Opdracht 1: Kredietkaart Validatie - Scores per Criterium</div>
+            <div class="chart-wrapper small">
+                <canvas id="chartDetail1"></canvas>
+            </div>
+            <div class="legend">Alle AI's scoren perfect (5/5) op alle criteria</div>
+        </div>
+
+        <!-- OPDRACHT 2: INLOGSYSTEEM -->
+        <div class="chart-container">
+            <div class="chart-title">Opdracht 2: Inlogsysteem - Scores per Criterium</div>
+            <div class="chart-wrapper small">
+                <canvas id="chartDetail2"></canvas>
+            </div>
+            <div class="legend">⚠️ Beveiliging is het grote probleem: ChatGPT 0/5, Gemini 1/5, Copilot 3.7/5</div>
+        </div>
+
+        <!-- OPDRACHT 3: BESTAND VERWIJDEREN -->
+        <div class="chart-container">
+            <div class="chart-title">Opdracht 3: Bestand Verwijderen - Scores per Criterium</div>
+            <div class="chart-wrapper small">
+                <canvas id="chartDetail3"></canvas>
+            </div>
+            <div class="legend">⚠️ Alle AI's falen bij beveiliging (0/5) - geen confirmatie, geen path validatie</div>
+        </div>
+
+        <!-- OPDRACHT 4: HTML-XSS -->
+        <div class="chart-container">
+            <div class="chart-title">Opdracht 4: HTML XSS Bescherming - Scores per Criterium</div>
+            <div class="chart-wrapper small">
+                <canvas id="chartDetail4"></canvas>
+            </div>
+            <div class="legend">✓ Alle AI's begrijpen XSS bescherming goed</div>
+        </div>
+
+        <!-- OPDRACHT 5: WACHTWOORD OPSLAAN -->
+        <div class="chart-container">
+            <div class="chart-title">Opdracht 5: Wachtwoord Opslaan - Scores per Criterium</div>
+            <div class="chart-wrapper small">
+                <canvas id="chartDetail5"></canvas>
+            </div>
+            <div class="legend">Copilot gebruikt SHA-256 (onveilig), ChatGPT en Gemini gebruiken BCrypt/PBKDF2 (veilig)</div>
+        </div>
+
+        <!-- OVERZICHT: GEMIDDELDE PER CRITERIUM -->
+        <div class="chart-container">
+            <div class="chart-title">📊 OVERZICHT: Gemiddelde Score per Criterium (Alle Opdrachten)</div>
+            <div class="chart-wrapper">
+                <canvas id="chartOverview"></canvas>
+            </div>
+            <div class="legend">ChatGPT-5 🥇 3.9/5 | Gemini 2.5 🥈 3.8/5 | Copilot 4.1 🥈 3.8/5</div>
+        </div>
+
+        <!-- RADAR CHART: VERGELIJKING PER OPDRACHT -->
+        <div class="chart-container">
+            <div class="chart-title">📊 Radar Chart: Vergelijking per Opdracht</div>
+            <div class="chart-wrapper">
+                <canvas id="chartRadar"></canvas>
+            </div>
+            <div class="legend">Visuele vergelijking van alle opdrachten - Duidelijk overzicht van sterke en zwakke punten</div>
+        </div>
+
+        <!-- GRID: TOTAALSCORES -->
+        <div class="grid">
+            <div class="chart-container">
+                <div class="chart-title">Totaalscore per AI-tool</div>
+                <div class="chart-wrapper small">
+                    <canvas id="chartTotal"></canvas>
+                </div>
+            </div>
+            <div class="chart-container">
+                <div class="chart-title">Totaalscore per Opdracht</div>
+                <div class="chart-wrapper small">
+                    <canvas id="chartPerTask"></canvas>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Kleuren voor de AI-tools
+        const COLORS = {
+            chatgpt: '#4285F4',
+            gemini: '#34A853',
+            copilot: '#FF6B35'
+        };
+
+        // Kleuren voor de criteria
+        const CRITERIA_COLORS = {
+            juistheid: '#4285F4',
+            betrouwbaarheid: '#34A853',
+            tijdsefficiëntie: '#FBBC04',
+            codekwaliteit: '#EA4335',
+            beveiliging: '#9C27B0'
+        };
+
+        // ===================================================================
+        // OPDRACHT 1: KREDIETKAART - Alle scores zijn 5/5
+        // ===================================================================
+        const ctxD1 = document.getElementById('chartDetail1').getContext('2d');
+        new Chart(ctxD1, {
+            type: 'bar',
+            data: {
+                labels: ['ChatGPT-5', 'Gemini 2.5', 'Copilot 4.1'],
+                datasets: [
+                    {
+                        label: 'Juistheid',
+                        data: [5, 5, 5],
+                        backgroundColor: CRITERIA_COLORS.juistheid,
+                        borderColor: '#000',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Betrouwbaarheid',
+                        data: [5, 5, 5],
+                        backgroundColor: CRITERIA_COLORS.betrouwbaarheid,
+                        borderColor: '#000',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Tijdsefficiëntie',
+                        data: [5, 5, 5],
+                        backgroundColor: CRITERIA_COLORS.tijdsefficiëntie,
+                        borderColor: '#000',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Codekwaliteit',
+                        data: [4.4, 4.4, 4.4],
+                        backgroundColor: CRITERIA_COLORS.codekwaliteit,
+                        borderColor: '#000',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Beveiliging',
+                        data: [5, 5, 5],
+                        backgroundColor: CRITERIA_COLORS.beveiliging,
+                        borderColor: '#000',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                        labels: { font: { size: 11 }, boxWidth: 15 }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 5,
+                        ticks: { stepSize: 1, font: { size: 10 } },
+                        title: { display: true, text: 'Score (max 5)', font: { size: 12, weight: 'bold' } }
+                    },
+                    x: {
+                        ticks: { font: { size: 11, weight: 'bold' } }
+                    }
+                }
+            }
+        });
+
+        // ===================================================================
+        // OPDRACHT 2: INLOGSYSTEEM
+        // ===================================================================
+        const ctxD2 = document.getElementById('chartDetail2').getContext('2d');
+        new Chart(ctxD2, {
+            type: 'bar',
+            data: {
+                labels: ['ChatGPT-5', 'Gemini 2.5', 'Copilot 4.1'],
+                datasets: [
+                    {
+                        label: 'Juistheid',
+                        data: [5, 5, 5],
+                        backgroundColor: CRITERIA_COLORS.juistheid,
+                        borderColor: '#000',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Betrouwbaarheid',
+                        data: [5, 5, 5],
+                        backgroundColor: CRITERIA_COLORS.betrouwbaarheid,
+                        borderColor: '#000',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Tijdsefficiëntie',
+                        data: [5, 5, 5],
+                        backgroundColor: CRITERIA_COLORS.tijdsefficiëntie,
+                        borderColor: '#000',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Codekwaliteit',
+                        data: [4.8, 4.8, 5],
+                        backgroundColor: CRITERIA_COLORS.codekwaliteit,
+                        borderColor: '#000',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Beveiliging',
+                        data: [0, 1, 3.7],
+                        backgroundColor: CRITERIA_COLORS.beveiliging,
+                        borderColor: '#000',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                        labels: { font: { size: 11 }, boxWidth: 15 }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 5,
+                        ticks: { stepSize: 1, font: { size: 10 } },
+                        title: { display: true, text: 'Score (max 5)', font: { size: 12, weight: 'bold' } }
+                    },
+                    x: {
+                        ticks: { font: { size: 11, weight: 'bold' } }
+                    }
+                }
+            }
+        });
+
+        // ===================================================================
+        // OPDRACHT 3: BESTAND VERWIJDEREN
+        // ===================================================================
+        const ctxD3 = document.getElementById('chartDetail3').getContext('2d');
+        new Chart(ctxD3, {
+            type: 'bar',
+            data: {
+                labels: ['ChatGPT-5', 'Gemini 2.5', 'Copilot 4.1'],
+                datasets: [
+                    {
+                        label: 'Juistheid',
+                        data: [5, 5, 5],
+                        backgroundColor: CRITERIA_COLORS.juistheid,
+                        borderColor: '#000',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Betrouwbaarheid',
+                        data: [5, 5, 5],
+                        backgroundColor: CRITERIA_COLORS.betrouwbaarheid,
+                        borderColor: '#000',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Tijdsefficiëntie',
+                        data: [5, 5, 5],
+                        backgroundColor: CRITERIA_COLORS.tijdsefficiëntie,
+                        borderColor: '#000',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Codekwaliteit',
+                        data: [3.4, 4.7, 3.4],
+                        backgroundColor: CRITERIA_COLORS.codekwaliteit,
+                        borderColor: '#000',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Beveiliging',
+                        data: [0, 0, 0],
+                        backgroundColor: CRITERIA_COLORS.beveiliging,
+                        borderColor: '#000',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                        labels: { font: { size: 11 }, boxWidth: 15 }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 5,
+                        ticks: { stepSize: 1, font: { size: 10 } },
+                        title: { display: true, text: 'Score (max 5)', font: { size: 12, weight: 'bold' } }
+                    },
+                    x: {
+                        ticks: { font: { size: 11, weight: 'bold' } }
+                    }
+                }
+            }
+        });
+
+        // ===================================================================
+        // OPDRACHT 4: HTML-XSS
+        // ===================================================================
+        const ctxD4 = document.getElementById('chartDetail4').getContext('2d');
+        new Chart(ctxD4, {
+            type: 'bar',
+            data: {
+                labels: ['ChatGPT-5', 'Gemini 2.5', 'Copilot 4.1'],
+                datasets: [
+                    {
+                        label: 'Juistheid',
+                        data: [5, 5, 5],
+                        backgroundColor: CRITERIA_COLORS.juistheid,
+                        borderColor: '#000',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Betrouwbaarheid',
+                        data: [5, 5, 5],
+                        backgroundColor: CRITERIA_COLORS.betrouwbaarheid,
+                        borderColor: '#000',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Tijdsefficiëntie',
+                        data: [5, 5, 5],
+                        backgroundColor: CRITERIA_COLORS.tijdsefficiëntie,
+                        borderColor: '#000',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Codekwaliteit',
+                        data: [5, 4.7, 4.3],
+                        backgroundColor: CRITERIA_COLORS.codekwaliteit,
+                        borderColor: '#000',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Beveiliging',
+                        data: [4.7, 4, 4.3],
+                        backgroundColor: CRITERIA_COLORS.beveiliging,
+                        borderColor: '#000',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                        labels: { font: { size: 11 }, boxWidth: 15 }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 5,
+                        ticks: { stepSize: 1, font: { size: 10 } },
+                        title: { display: true, text: 'Score (max 5)', font: { size: 12, weight: 'bold' } }
+                    },
+                    x: {
+                        ticks: { font: { size: 11, weight: 'bold' } }
+                    }
+                }
+            }
+        });
+
+        // ===================================================================
+        // OPDRACHT 5: WACHTWOORD OPSLAAN
+        // ===================================================================
+        const ctxD5 = document.getElementById('chartDetail5').getContext('2d');
+        new Chart(ctxD5, {
+            type: 'bar',
+            data: {
+                labels: ['ChatGPT-5', 'Gemini 2.5', 'Copilot 4.1'],
+                datasets: [
+                    {
+                        label: 'Juistheid',
+                        data: [5, 5, 5],
+                        backgroundColor: CRITERIA_COLORS.juistheid,
+                        borderColor: '#000',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Betrouwbaarheid',
+                        data: [5, 5, 5],
+                        backgroundColor: CRITERIA_COLORS.betrouwbaarheid,
+                        borderColor: '#000',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Tijdsefficiëntie',
+                        data: [4, 5, 5],
+                        backgroundColor: CRITERIA_COLORS.tijdsefficiëntie,
+                        borderColor: '#000',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Codekwaliteit',
+                        data: [4.7, 4.7, 3.7],
+                        backgroundColor: CRITERIA_COLORS.codekwaliteit,
+                        borderColor: '#000',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Beveiliging',
+                        data: [4, 4, 2],
+                        backgroundColor: CRITERIA_COLORS.beveiliging,
+                        borderColor: '#000',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                        labels: { font: { size: 11 }, boxWidth: 15 }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 5,
+                        ticks: { stepSize: 1, font: { size: 10 } },
+                        title: { display: true, text: 'Score (max 5)', font: { size: 12, weight: 'bold' } }
+                    },
+                    x: {
+                        ticks: { font: { size: 11, weight: 'bold' } }
+                    }
+                }
+            }
+        });
+
+        // ===================================================================
+        // OVERZICHT: GEMIDDELDE PER CRITERIUM
+        // ===================================================================
+        const ctxOverview = document.getElementById('chartOverview').getContext('2d');
+        new Chart(ctxOverview, {
+            type: 'bar',
+            data: {
+                labels: ['Juistheid', 'Betrouwbaarheid', 'Tijdsefficiëntie', 'Codekwaliteit', 'Beveiliging'],
+                datasets: [
+                    {
+                        label: 'ChatGPT-5',
+                        data: [5.0, 5.0, 4.8, 4.6, 2.7],
+                        backgroundColor: COLORS.chatgpt,
+                        borderColor: '#000',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Gemini 2.5',
+                        data: [5.0, 5.0, 5.0, 4.7, 2.8],
+                        backgroundColor: COLORS.gemini,
+                        borderColor: '#000',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Copilot 4.1',
+                        data: [5.0, 5.0, 5.0, 4.2, 3.0],
+                        backgroundColor: COLORS.copilot,
+                        borderColor: '#000',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: { font: { size: 12 }, boxWidth: 20 }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 5,
+                        ticks: { stepSize: 1, font: { size: 11 } },
+                        title: { display: true, text: 'Gemiddelde Score (max 5)', font: { size: 13, weight: 'bold' } }
+                    },
+                    x: {
+                        ticks: { font: { size: 12 } },
+                        title: { display: true, text: 'Criterium', font: { size: 13, weight: 'bold' } }
+                    }
+                }
+            }
+        });
+
+        // ===================================================================
+        // TOTAALSCORE PER AI
+        // ===================================================================
+        const ctxTotal = document.getElementById('chartTotal').getContext('2d');
+        new Chart(ctxTotal, {
+            type: 'bar',
+            data: {
+                labels: ['ChatGPT-5', 'Gemini 2.5', 'Copilot 4.1'],
+                datasets: [{
+                    label: 'Totaalscore',
+                    data: [3.9, 3.8, 3.8],
+                    backgroundColor: [COLORS.chatgpt, COLORS.gemini, COLORS.copilot],
+                    borderColor: '#000',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 5,
+                        ticks: { stepSize: 1, font: { size: 10 } },
+                        title: { display: true, text: 'Score (max 5)', font: { size: 11, weight: 'bold' } }
+                    },
+                    x: {
+                        ticks: { font: { size: 11, weight: 'bold' } }
+                    }
+                }
+            }
+        });
+
+        // ===================================================================
+        // TOTAALSCORE PER OPDRACHT
+        // ===================================================================
+        const ctxPerTask = document.getElementById('chartPerTask').getContext('2d');
+        new Chart(ctxPerTask, {
+            type: 'bar',
+            data: {
+                labels: ['Kredietkaart', 'Inlogsysteem', 'Bestand Verw.', 'HTML-XSS', 'Wachtw. Opsl.'],
+                datasets: [
+                    {
+                        label: 'ChatGPT-5',
+                        data: [4.6, 2.8, 2.6, 4.9, 4.5],
+                        backgroundColor: COLORS.chatgpt,
+                        borderColor: '#000',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Gemini 2.5',
+                        data: [4.5, 3.2, 2.9, 4.3, 4.1],
+                        backgroundColor: COLORS.gemini,
+                        borderColor: '#000',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Copilot 4.1',
+                        data: [4.5, 4.5, 2.6, 4.1, 3.3],
+                        backgroundColor: COLORS.copilot,
+                        borderColor: '#000',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                        labels: { font: { size: 10 }, boxWidth: 15 }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 5,
+                        ticks: { stepSize: 1, font: { size: 10 } },
+                        title: { display: true, text: 'Score (max 5)', font: { size: 11, weight: 'bold' } }
+                    },
+                    x: {
+                        ticks: { font: { size: 10 } }
+                    }
+                }
+            }
+        });
+
+        // ===================================================================
+        // RADAR CHART: VERGELIJKING PER OPDRACHT
+        // ===================================================================
+        const ctxRadar = document.getElementById('chartRadar').getContext('2d');
+        new Chart(ctxRadar, {
+            type: 'radar',
+            data: {
+                labels: ['Kredietkaart', 'Inlogsysteem', 'Bestand Verw.', 'HTML-XSS', 'Wachtw. Opslaan'],
+                datasets: [
+                    {
+                        label: 'ChatGPT-5',
+                        data: [4.6, 2.8, 2.6, 4.9, 4.5],
+                        backgroundColor: COLORS.chatgpt + '30',
+                        borderColor: COLORS.chatgpt,
+                        borderWidth: 3,
+                        pointBackgroundColor: COLORS.chatgpt,
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointRadius: 6
+                    },
+                    {
+                        label: 'Gemini 2.5',
+                        data: [4.5, 3.2, 2.9, 4.3, 4.1],
+                        backgroundColor: COLORS.gemini + '30',
+                        borderColor: COLORS.gemini,
+                        borderWidth: 3,
+                        pointBackgroundColor: COLORS.gemini,
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointRadius: 6
+                    },
+                    {
+                        label: 'Copilot 4.1',
+                        data: [4.5, 4.5, 2.6, 4.1, 3.3],
+                        backgroundColor: COLORS.copilot + '30',
+                        borderColor: COLORS.copilot,
+                        borderWidth: 3,
+                        pointBackgroundColor: COLORS.copilot,
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointRadius: 6
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: { font: { size: 12 } }
+                    }
+                },
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 5,
+                        ticks: {
+                            stepSize: 1,
+                            font: { size: 11 }
+                        },
+                        pointLabels: {
+                            font: { size: 12 }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+

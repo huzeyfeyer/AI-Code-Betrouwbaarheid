@@ -1,0 +1,70 @@
+BEOORDELING: Login.java
+
+===========================================
+SCORES
+===========================================
+
+Juistheid: 5/5
+De code werkt zoals het moet. Login controle werkt correct met equals vergelijking.
+
+Betrouwbaarheid: 5/5
+De code doet altijd hetzelfde met dezelfde input. Fallback mechanisme maakt het robuuster.
+
+Tijdsefficiëntie: 5/5
+Simpele string vergelijking. Geen onnodige berekeningen, direct en snel.
+
+Codekwaliteit:
+
+  Namen duidelijk: 3/5
+  Constants zijn in Engels (CORRECT_USERNAME, CORRECT_PASSWORD). Variabelen ook Engels (username, password).
+  Commentaren zijn wel in Nederlands. Niet consistent.
+
+  Niet ingewikkeld: 4/5
+  Code is goed te volgen maar heeft wel een if-else voor Console fallback. Iets complexer dan anderen.
+
+  Geen herhaling: 5/5
+  Geen dubbele code. Goede hergebruik van logica.
+
+  Logische structuur: 5/5
+  Goede structuur met fallback mechanisme. Duidelijke scheiding tussen input methodes.
+  Commentaar over scanner.close() toont begrip van resource management.
+
+  Commentaar: 5/5
+  UITSTEKENDE commentaren! Security waarschuwingen, uitleg over Console vs Scanner, commentaar over scanner.close().
+  Zeer professioneel en bewust van best practices.
+
+Beveiliging: 4/5
+BESTE SECURITY TOT NU TOE!
++ Console.readPassword() verbergt wachtwoord tijdens typen
++ Arrays.fill(pwdChars, '\0') - WIST WACHTWOORD UIT GEHEUGEN! (ADVANCED SECURITY)
++ Security waarschuwingen in commentaren
++ Final constants
+- Wachtwoord en gebruikersnaam hardcoded
+- Wachtwoord in plaintext in code (geen hashing)
+- Wachtwoord "geheim123" is zwak
+- Geen brute force protectie
+
+===========================================
+TOTAALSCORE: 4.5/5
+===========================================
+
+PROBLEMEN / KAN BETER:
+
+1. Arrays.fill() voor memory clearing (ADVANCED SECURITY!)
+   
+   Voordeel: Arrays.fill(pwdChars, '\0') WIST het wachtwoord uit het geheugen na gebruik
+   Veiligheid: Voorkomt dat het wachtwoord in memory blijft staan (memory dump attacks)
+   Dit is PROFESSIONELE security practice die zelfs Gemini niet gebruikt!
+
+2. Console.readPassword() met veilige cleanup (BESTE IMPLEMENTATIE)
+   
+   Voordeel: Wachtwoord wordt NIET getoond tijdens het typen
+   Extra: Het char array wordt daarna veilig gewist
+   Commentaar: Goede uitleg over waarom scanner niet wordt gesloten
+
+3. Geen brute force protectie
+   
+   Invoer: 100x fout wachtwoord proberen
+   Probleem: Programma accepteert onbeperkt aantal pogingen
+   Oplossing: Blokkeer na 3 foute pogingen
+

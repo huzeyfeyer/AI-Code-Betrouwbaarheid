@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Eenvoudige begroeter</title>
+  <style>
+    :root { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    body { margin: 0; padding: 2rem; background: #f7f7f8; color: #1f2328; }
+    main { max-width: 520px; margin: 0 auto; background: #fff; padding: 1.5rem; border-radius: 14px; box-shadow: 0 6px 20px rgba(0,0,0,.06); }
+    h1 { margin: 0 0 1rem; font-size: 1.4rem; }
+    label { display: block; margin: .5rem 0 .25rem; font-weight: 600; }
+    input { width: 100%; padding: .6rem .7rem; border: 1px solid #d0d7de; border-radius: 10px; font-size: 1rem; }
+    button { margin-top: .75rem; padding: .55rem .9rem; border: 0; border-radius: 10px; background: #0a7cff; color: #fff; font-weight: 600; cursor: pointer; }
+    .output { margin-top: 1rem; font-size: 1.1rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Begroeter</h1>
+
+    <form id="greet-form" autocomplete="off" novalidate>
+      <label for="naam">Voer tekst in</label>
+      <input id="naam" name="naam" type="text" maxlength="200" placeholder="Bijv. Sam" />
+      <button type="submit">Toon</button>
+    </form>
+
+    <!-- aria-live zorgt dat schermlezers de verandering voorlezen -->
+    <p id="output" class="output" aria-live="polite" hidden>
+      Hallo <span id="naam-echo"></span>
+    </p>
+  </main>
+
+  <script>
+    const form = document.getElementById('greet-form');
+    const input = document.getElementById('naam');
+    const echo = document.getElementById('naam-echo');
+    const output = document.getElementById('output');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      // XSS-bescherming: gebruik uitsluitend textContent (geen innerHTML).
+      const value = (input.value ?? '').trim();
+      echo.textContent = value;      // Tekst wordt letterlijk geplaatst
+      output.hidden = value === '';  // Verberg als leeg
+    });
+  </script>
+</body>
+</html>

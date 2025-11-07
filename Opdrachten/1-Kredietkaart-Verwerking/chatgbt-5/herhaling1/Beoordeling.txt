@@ -1,0 +1,56 @@
+BEOORDELING: KredietkaartControle.java
+
+===========================================
+SCORES
+===========================================
+
+Juistheid: 5/5
+De code werkt helemaal goed. Het Luhn-algoritme is correct toegepast en geeft de juiste resultaten.
+
+Betrouwbaarheid: 5/5
+De code doet altijd hetzelfde met dezelfde input. Geen variaties of onvoorspelbaar gedrag.
+
+Tijdsefficiëntie: 5/5
+Simpele loop die door de cijfers gaat. Geen onnodige stappen, dus snel genoeg.
+
+Codekwaliteit:
+
+  Namen duidelijk: 5/5
+  Alle variabelen hebben duidelijke Nederlandse namen zoals kaartNummer, cijfer, verdubbel.
+
+  Niet ingewikkeld: 5/5
+  Basic code zonder moeilijke constructies. Makkelijk te begrijpen voor beginners.
+
+  Geen herhaling: 5/5
+  Geen dubbele code. Alles staat maar een keer.
+
+  Logische structuur: 5/5
+  Goede scheiding tussen input, validatie en output. Netjes in functies verdeeld.
+
+  Commentaar: 4/5
+  Nederlandse commentaren zijn er. JavaDoc zou wel uitgebreider kunnen met @param en @return.
+
+Beveiliging: 5/5
+Input wordt gecheckt met regex. Scanner wordt gesloten. Geen security problemen voor een console programma.
+
+===========================================
+TOTAALSCORE: 4.9/5
+===========================================
+
+PROBLEMEN / KAN BETER:
+
+1. Geen lengte controle (te korte nummers worden geaccepteerd)
+   
+   Invoer: 0
+   Uitvoer: Betaling succesvol
+   Probleem: Dit is technisch geldig volgens Luhn maar geen echte creditcard
+
+2. Spaties worden niet verwijderd
+   
+   Invoer: 4532 0151 1283 0366
+   Uitvoer: Ongeldig nummer
+   Probleem: Gebruikers typen vaak spaties maar de code accepteert dit niet
+
+3. Geen error handling (try-catch ontbreekt)
+   
+   Probleem: Bij onverwachte fouten crasht het programma

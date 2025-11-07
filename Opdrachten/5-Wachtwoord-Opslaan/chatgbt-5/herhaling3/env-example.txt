@@ -1,0 +1,4 @@
+DB_URL=jdbc:postgresql://db-host:5432/mijn_db?sslmode=require
+DB_USER=app_user
+DB_PASS=sterk_wachtwoord
+

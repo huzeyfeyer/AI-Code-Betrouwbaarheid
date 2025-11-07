@@ -1,0 +1,71 @@
+BEOORDELING: LoginApp.java
+
+===========================================
+SCORES
+===========================================
+
+Juistheid: 5/5
+De code werkt zoals het moet. Login controle werkt correct met equals vergelijking.
+
+Betrouwbaarheid: 5/5
+De code doet altijd hetzelfde met dezelfde input. Fallback mechanisme maakt het robuuster.
+
+Tijdsefficiëntie: 5/5
+Simpele string vergelijking. Geen onnodige berekeningen, direct en snel.
+
+Codekwaliteit:
+
+  Namen duidelijk: 3/5
+  Constants zijn in Engels (CORRECT_USER, CORRECT_PASS). Variabelen ook Engels (username, password).
+  Commentaren zijn wel in Nederlands. Niet consistent.
+
+  Niet ingewikkeld: 4/5
+  Code is goed te volgen. Console fallback en aparte validatie methode maken het iets complexer.
+
+  Geen herhaling: 5/5
+  Geen dubbele code. Validatie logica in aparte methode voorkomt herhaling.
+
+  Logische structuur: 5/5
+  UITSTEKEND! Aparte isValid() methode voor validatie. Try-with-resources voor Scanner.
+  Duidelijke scheiding tussen input, validatie en output. Professionele structuur.
+
+  Commentaar: 5/5
+  UITSTEKENDE commentaren! Security waarschuwingen, uitleg over Console vs Scanner.
+  Duidelijke Nederlandse commentaren bij elke sectie.
+
+Beveiliging: 4/5
+BESTE SECURITY TOT NU TOE!
++ Console.readPassword() verbergt wachtwoord tijdens typen
++ Arrays.fill(pwdChars, ' ') - WIST WACHTWOORD UIT GEHEUGEN!
++ Aparte validatie functie scheidt logica
++ Try-with-resources voorkomt resource leaks
++ Private constants
+- Wachtwoord en gebruikersnaam hardcoded
+- Wachtwoord in plaintext in code (geen hashing)
+- Wachtwoord "wachtwoord123" is zwak
+- Geen brute force protectie
+
+===========================================
+TOTAALSCORE: 4.5/5
+===========================================
+
+PROBLEMEN / KAN BETER:
+
+1. Modulaire structuur met isValid() methode (VERBETERING)
+   
+   Voordeel: Aparte isValid() methode maakt code testbaar en herbruikbaar
+   Structuur: Main doet I/O, isValid() doet validatie logica
+   Best practice: Single Responsibility Principle wordt toegepast
+
+2. Try-with-resources voor Scanner (BEST PRACTICE)
+   
+   Voordeel: try (Scanner scanner = ...) sluit automatisch de resource
+   Veiligheid: Geen resource leaks mogelijk
+   Professioneel: Dit is moderne Java best practice
+
+3. Geen brute force protectie
+   
+   Invoer: 100x fout wachtwoord proberen
+   Probleem: Programma accepteert onbeperkt aantal pogingen
+   Oplossing: Blokkeer na 3 foute pogingen of voeg een delay toe
+

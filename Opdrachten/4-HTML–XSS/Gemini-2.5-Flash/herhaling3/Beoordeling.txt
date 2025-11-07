@@ -1,0 +1,63 @@
+BEOORDELING: index.html
+
+===========================================
+SCORES
+===========================================
+
+Juistheid: 5/5
+De code werkt perfect. XSS wordt voorkomen (maar op een verwarrende manier).
+
+Betrouwbaarheid: 5/5
+De code doet altijd hetzelfde. Consistent gedrag.
+
+Tijdsefficiëntie: 3/5
+ontsnapHTML doet werk dat NIET NODIG is. textContent maakt het al veilig.
+Meerdere replace calls voor niets. Inefficiënt!
+
+Codekwaliteit:
+
+  Namen duidelijk: 5/5
+  Uitstekende Nederlandse namen: invoerVeld, uitvoerElement, ingevoerdeTekst, veiligeTekst.
+  Zeer consistent!
+
+  Niet ingewikkeld: 2/5
+  ONNODIG COMPLEX! ontsnapHTML + textContent is DUBBEL WERK.
+  textContent maakt het al automatisch veilig. ontsnapHTML is nutteloos.
+
+  Geen herhaling: 5/5
+  Geen dubbele code binnen de functies zelf.
+
+  Logische structuur: 3/5
+  Verwarrende logica: escape eerst, dan textContent (die automatisch escaped).
+  onclick inline handler (niet modern).
+  Geen form element, geen IIFE wrapper.
+
+  Commentaar: 5/5
+  UITSTEKENDE commentaren! JavaDoc met @brief, stap-voor-stap uitleg.
+  Legt zelfs uit dat textContent al voldoende is (regel 60-62)!
+
+Beveiliging: 5/5
+100% VEILIG door textContent:
++ textContent op regel 58 voorkomt automatisch XSS
++ Geen innerHTML gebruikt
+- ontsnapHTML functie is OVERBODIG en voegt verwarring toe
+- Commentaar (regel 60-62) erkent zelfs dat textContent al voldoende is!
+
+===========================================
+TOTAALSCORE: 4.1/5
+===========================================
+
+PROBLEMEN / KAN BETER:
+
+1. ontsnapHTML functie is OVERBODIG (GROOT PROBLEEM!)
+   De code gebruikt ontsnapHTML EN textContent samen. Dit is dubbel werk!
+   textContent op regel 58 maakt het al automatisch veilig. ontsnapHTML is nutteloos.
+
+2. ZELF-TEGENSTRIJDIG (VERWARREND)
+   Commentaar op regel 60-62 zegt: "textContent-methode voldoende"
+   Waarom dan nog ontsnapHTML gebruiken? Dit is tegenstrijdig en verwarrend!
+
+IRONISCH:
+Gemini WEET dat textContent voldoende is (staat in commentaar!) maar gebruikt
+toch een onnodige ontsnapHTML functie. Dit is zoals Copilot herhaling2!
+

@@ -1,0 +1,5 @@
+CREATE TABLE wachtwoorden (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  hash VARCHAR(64) NOT NULL
+);
+

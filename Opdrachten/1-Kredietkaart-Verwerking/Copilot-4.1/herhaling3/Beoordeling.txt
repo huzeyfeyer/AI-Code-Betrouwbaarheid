@@ -1,0 +1,62 @@
+BEOORDELING: CreditCardValidator.java
+
+===========================================
+SCORES
+===========================================
+
+Juistheid: 5/5
+De code werkt helemaal goed. Het Luhn-algoritme is correct toegepast en geeft de juiste resultaten.
+
+Betrouwbaarheid: 5/5
+De code doet altijd hetzelfde met dezelfde input. Geen variaties of onvoorspelbaar gedrag.
+
+Tijdsefficiëntie: 5/5
+Simpele loop die door de cijfers gaat. Early returns stoppen onnodige berekeningen.
+
+Codekwaliteit:
+
+  Namen duidelijk: 4/5
+  Mix van Engels en Nederlands. Class naam CreditCardValidator is Engels, maar methode luhnControle is Nederlands.
+  Variabelen zijn Nederlands (genormaliseerdNummer, cijfer, dubbel, som). Redelijk consistent.
+
+  Niet ingewikkeld: 5/5
+  Duidelijke structuur. Elke validatiestap is logisch opgebouwd met early returns.
+
+  Geen herhaling: 5/5
+  Geen dubbele code. Constants worden gebruikt voor MIN_LENGTE en MAX_LENGTE. Professioneel.
+
+  Logische structuur: 5/5
+  Uitstekend! Main methode doet input en validatie, luhnControle functie is apart.
+  Try-finally blok zorgt voor proper resource management.
+
+  Commentaar: 5/5
+  PERFECTE commentaren! Uitgebreide JavaDoc met @param en @return. Header commentaar legt het hele programma uit.
+  Inline comments waar nodig.
+
+Beveiliging: 5/5
+Try-finally zorgt dat scanner altijd wordt gesloten. Lengte validatie (13-19). Regex check voor alleen cijfers.
+Spaties/streepjes worden verwijderd. Dit is de meest veilige implementatie!
+
+===========================================
+TOTAALSCORE: 4.9/5
+===========================================
+
+PROBLEMEN / KAN BETER:
+
+1. Lengte controle is PERFECT geimplementeerd!
+   
+   Invoer: 0
+   Uitvoer: Ongeldig nummer
+   Oplossing: MIN_LENGTE en MAX_LENGTE constants maken het duidelijk en makkelijk aan te passen
+
+2. Error handling is WEL aanwezig! (GROTE VERBETERING)
+   
+   Try-finally blok zorgt ervoor dat de scanner altijd wordt gesloten, zelfs bij een fout.
+   Dit voorkomt resource leaks. BEST PRACTICE!
+
+3. Alle validaties zijn aanwezig
+   
+   Invoer: 4532 0151 1283 0366
+   Uitvoer: Betaling succesvol
+   Opmerking: Spaties worden netjes verwijderd, lengte wordt gecheckt, Luhn wordt toegepast
+

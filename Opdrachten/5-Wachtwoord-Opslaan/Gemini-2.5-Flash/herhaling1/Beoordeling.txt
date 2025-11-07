@@ -1,0 +1,57 @@
+BEOORDELING: PasswordOpslag.java
+
+===========================================
+SCORES
+===========================================
+
+Juistheid: 5/5
+De code werkt correct. BCrypt wordt goed gebruikt voor password hashing!
+
+Betrouwbaarheid: 3/5
+Hardcoded credentials zijn een probleem. Debug print is gevaarlijk.
+
+Tijdsefficiëntie: 4/5
+BCrypt cost factor 12 is GOED (opzettelijk langzaam voor security).
+
+Codekwaliteit:
+
+  Namen duidelijk: 5/5
+  UITSTEKENDE Nederlandse namen: hashWachtwoord, slaWachtwoordOp, gehashteWachtwoord.
+  Zeer consistent!
+
+  Niet ingewikkeld: 5/5
+  Simpel en duidelijk. BCrypt is makkelijker te gebruiken dan PBKDF2.
+
+  Geen herhaling: 5/5
+  Geen dubbele code. Functies zijn herbruikbaar.
+
+  Logische structuur: 4/5
+  Goede modulaire structuur. try-with-resources.
+  Scanner niet gesloten (resource leak).
+
+  Commentaar: 5/5
+  UITSTEKENDE Nederlandse commentaar! JavaDoc, emoji's, duidelijke waarschuwingen.
+  Legt BCrypt cost factor uit.
+
+Beveiliging: 3/5
+Goede hashing maar hardcoded credentials:
++ BCrypt met salt (moderne hashing)
++ PreparedStatement voor database
+
+PROBLEMEN:
+- HARDCODED CREDENTIALS = KRITIEK!
+- Debug print van hash
+- Scanner toont wachtwoord
+
+===========================================
+TOTAALSCORE: 4.0/5
+===========================================
+
+PROBLEMEN / KAN BETER:
+
+1. HARDCODED DATABASE CREDENTIALS (regel 12-13)
+   "jouw_gebruiker" en "jouw_wachtwoord" in code. Gebruik environment variables!
+
+2. Debug print van gehashte wachtwoord (regel 67)
+   In productie mag dit NOOIT gelogd worden. Security risk.
+

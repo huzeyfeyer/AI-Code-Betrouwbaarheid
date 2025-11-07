@@ -1,0 +1,8 @@
+BRON INFORMATIE
+
+AI Tool: Gemini 2.5 Flash
+Code: PasswordOpslag.java
+
+Conversatie Link:
+https://gemini.google.com/share/1af00ec4f775
+

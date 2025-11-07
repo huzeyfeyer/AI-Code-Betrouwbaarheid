@@ -1,0 +1,8 @@
+BRON INFORMATIE
+
+AI Tool: ChatGPT-5
+Code: KredietkaartValidator.java
+
+Conversatie Link:
+https://chatgpt.com/share/690a1eab-b840-8011-ad3a-567cedd20a33
+

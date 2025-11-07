@@ -1,0 +1,54 @@
+BEOORDELING: index.html
+
+===========================================
+SCORES
+===========================================
+
+Juistheid: 5/5
+De code werkt perfect. Tekst wordt veilig getoond en XSS wordt voorkomen met textContent.
+
+Betrouwbaarheid: 5/5
+De code doet altijd hetzelfde. Consistent en voorspelbaar gedrag.
+
+Tijdsefficiëntie: 5/5
+Directe DOM manipulatie. Live update is efficient geimplementeerd.
+
+Codekwaliteit:
+
+  Namen duidelijk: 5/5
+  Alle ID's en variabelen hebben duidelijke Nederlandse namen (invoer, weergave, groet-form).
+  Consistent en logisch.
+
+  Niet ingewikkeld: 5/5
+  Duidelijke code met aparte functie updateGroet(). Makkelijk te begrijpen.
+
+  Geen herhaling: 5/5
+  Geen dubbele code. updateGroet() functie voorkomt herhaling tussen submit en input event.
+
+  Logische structuur: 5/5
+  UITSTEKEND! IIFE wrapper voorkomt global scope pollution. Aparte functie voor logica.
+  Semantische HTML met main, form, label, footer.
+
+  Commentaar: 5/5
+  PERFECTE commentaren! Footer legt XSS bescherming educatief uit met code voorbeelden.
+  Inline comments leggen security uit. Aria-describedby informeert gebruiker.
+
+Beveiliging: 5/5
+UITSTEKENDE XSS BESCHERMING!
++ textContent gebruikt (GEEN innerHTML) - voorkomt script execution
++ IIFE wrapper voorkomt global scope pollution
++ Educatieve footer legt security uit aan developers en gebruikers
++ Aria-describedby informeert gebruikers over veiligheid
++ Commentaar in code legt security implementatie uit
+Dit is PROFESSIONELE en EDUCATIEVE security!
+
+===========================================
+TOTAALSCORE: 5.0/5
+===========================================
+
+PROBLEMEN / KAN BETER:
+
+GEEN ECHTE PROBLEMEN!
+Deze implementatie is de beste van alle drie versies.
+Combineert IIFE wrapper, live typing en educatieve footer perfect.
+

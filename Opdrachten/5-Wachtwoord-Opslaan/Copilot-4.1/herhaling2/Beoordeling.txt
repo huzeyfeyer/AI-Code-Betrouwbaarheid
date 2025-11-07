@@ -1,0 +1,51 @@
+BEOORDELING: PasswordSaver.java
+
+===========================================
+SCORES
+===========================================
+
+Juistheid: 4/5
+De code compileert en draait, maar SHA-256 zonder salt is NIET de juiste aanpak.
+
+Betrouwbaarheid: 2/5
+HARDCODED DATABASE CREDENTIALS! Dit is ZEER ONVEILIG.
+
+Tijdsefficiëntie: 5/5
+SHA-256 is ZEER SNEL - maar dit is SLECHT voor passwords!
+
+Codekwaliteit:
+
+  Namen duidelijk: 5/5
+  Goede Nederlandse namen: hashPassword, savePassword, wachtwoorden.
+
+  Niet ingewikkeld: 5/5
+  Simpele en leesbare code. Maar té simpel voor security!
+
+  Geen herhaling: 5/5
+  Geen dubbele code. Functies zijn herbruikbaar.
+
+  Logische structuur: 4/5
+  Goede modulaire structuur. Scanner wordt gesloten (beter dan h1).
+  try-with-resources voor database.
+
+  Commentaar: 1/5
+  GEEN ENKELE COMMENTAAR! Zelfs geen uitleg over security.
+
+Beveiliging: 1/5
+ERNSTIGE PROBLEMEN!
+- HARDCODED CREDENTIALS = KRITIEK!
+- SHA-256 zonder salt = ONVEILIG
+- Scanner toont wachtwoord
+
+===========================================
+TOTAALSCORE: 3.0/5
+===========================================
+
+PROBLEMEN / KAN BETER:
+
+1. HARDCODED DATABASE CREDENTIALS = KRITIEKE FOUT!
+   Regel 11-12: credentials in code. Gebruik environment variables!
+
+2. SHA-256 zonder salt = KRITIEKE SECURITY FOUT!
+   SHA-256 is NIET geschikt voor passwords. Gebruik PBKDF2 of BCrypt.
+

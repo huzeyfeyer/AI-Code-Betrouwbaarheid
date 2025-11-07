@@ -1,0 +1,68 @@
+BEOORDELING: VerwijderBestand.java
+
+===========================================
+SCORES
+===========================================
+
+Juistheid: 5/5
+De code werkt correct. Bestand wordt verwijderd als het bestaat, anders komt er een melding.
+
+Betrouwbaarheid: 5/5
+De code doet altijd hetzelfde met dezelfde input. Consistent gedrag.
+
+Tijdsefficiëntie: 5/5
+Direct verwijderen zonder onnodige stappen. File.delete() is efficient.
+
+Codekwaliteit:
+
+  Namen duidelijk: 5/5
+  Alle variabelen hebben duidelijke Nederlandse namen (bestandsNaam, bestand).
+
+  Niet ingewikkeld: 5/5
+  Zeer simpele code zonder moeilijke constructies. Makkelijk te begrijpen.
+
+  Geen herhaling: 5/5
+  Geen dubbele code. Alles staat maar een keer.
+
+  Logische structuur: 4/5
+  Simpele structuur met if-else. Voor dit programma is het ok maar validatie zou in aparte functie kunnen.
+
+  Commentaar: 3/5
+  KLEINE VERBETERING! Er zijn nu korte commentaren toegevoegd bij elke stap.
+  Maar nog steeds GEEN waarschuwing over de security risico's van bestandsverwijdering.
+
+Beveiliging: 0/5
+EXTREEM GEVAARLIJK! Dezelfde kritieke security problemen als herhaling1 en 2:
+- Geen bevestiging voor verwijderen (bestand is direct weg!)
+- Geen path validatie (kan systembestanden verwijderen)
+- Geen directory traversal bescherming (../../../etc/passwd)
+- Geen whitelist van toegestane directories
+- Geen check of het een kritiek bestand is
+
+===========================================
+TOTAALSCORE: 3.2/5
+===========================================
+
+PROBLEMEN / KAN BETER:
+
+1. Geen bevestiging voor verwijderen (KRITIEK PROBLEEM!)
+   
+   Invoer: belangrijkDocument.txt
+   Probleem: Bestand wordt DIRECT verwijderd zonder "Weet je het zeker?" vraag
+   Risico: Gebruiker kan per ongeluk belangrijke bestanden verwijderen
+   Oplossing: Vraag "Weet je zeker dat je [bestand] wilt verwijderen? (ja/nee)"
+
+2. Geen path validatie (KRITIEK SECURITY PROBLEEM!)
+   
+   Invoer: /System/Library/belangrijkBestand.dat
+   Probleem: Kan systembestanden verwijderen als gebruiker rechten heeft
+   Risico: Kan systeem onbruikbaar maken
+   Oplossing: Beperk verwijderen tot een specifieke safe directory
+
+3. Directory traversal mogelijk (SECURITY PROBLEEM!)
+   
+   Invoer: ../../../etc/passwd
+   Probleem: Kan bestanden buiten de huidige directory verwijderen
+   Risico: Toegang tot en verwijdering van bestanden waar je niet bij zou moeten kunnen
+   Oplossing: Valideer dat het path geen ".." bevat
+

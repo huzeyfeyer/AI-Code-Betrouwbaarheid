@@ -1,0 +1,8 @@
+BRON INFORMATIE
+
+AI Tool: GitHub Copilot 4.1
+Code: index.html
+
+Conversatie Link:
+https://github.com/copilot/share/886b1090-4020-8ce1-8103-480120206068
+

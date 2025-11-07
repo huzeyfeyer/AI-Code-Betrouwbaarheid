@@ -1,0 +1,8 @@
+BRON INFORMATIE
+
+AI Tool: Gemini 2.5 Flash
+Code: PasswordSaver.java
+
+Conversatie Link:
+https://gemini.google.com/share/37f0e11a23df
+
