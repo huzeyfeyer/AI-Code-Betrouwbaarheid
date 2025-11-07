@@ -62,7 +62,7 @@ Elke code wordt beoordeeld op 5 criteria (max 5 punten per criterium):
 
  ChatGPT-5     | 3.9/5 |  #1   |
  Gemini 2.5    | 3.8/5 |  #2   |
- opilot 4.1    | 3.8/5 |  #2   |
+ Copilot 4.1    | 3.8/5 |  #2   |
 
 
 ## Gebruikte Tools & Libraries
